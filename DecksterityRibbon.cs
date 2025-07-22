@@ -58,15 +58,32 @@ namespace decksterity
 
         public Bitmap GetImage(Office.IRibbonControl control)
         {
-            Console.WriteLine("GetImage called for control: " + control.Id);
             switch (control.Id)
             {
+                case "Blank": return Resources.Blank;
                 case "HarveyBall0": return Resources.HarveyBall0;
                 case "HarveyBall1": return Resources.HarveyBall1;
                 case "HarveyBall2": return Resources.HarveyBall2;
                 case "HarveyBall3": return Resources.HarveyBall3;
                 case "HarveyBall4": return Resources.HarveyBall4;
                 case "HarveyBallCustom": return Resources.HarveyBallCustom;
+                case "ArrowNW": return Resources.ArrowNW;
+                case "ArrowN": return Resources.ArrowN;
+                case "ArrowNE": return Resources.ArrowNE;
+                case "ArrowW": return Resources.ArrowW;
+                case "ArrowE": return Resources.ArrowE;
+                case "ArrowSW": return Resources.ArrowSW;
+                case "ArrowS": return Resources.ArrowS;
+                case "ArrowSE": return Resources.ArrowSE;
+                case "IconCheck": return Resources.IconCheck;
+                case "IconCross": return Resources.IconCross;
+                case "IconQuestion": return Resources.IconQuestion;
+                case "IconPlus": return Resources.IconPlus;
+                case "IconMinus": return Resources.IconMinus;
+                case "IconEllipsis": return Resources.IconEllipsis;
+                case "StoplightRed": return Resources.StoplightRed;
+                case "StoplightAmber": return Resources.StoplightAmber;
+                case "StoplightGreen": return Resources.StoplightGreen;
                 default: return Resources.Blank;
             }
         }

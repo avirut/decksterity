@@ -12,46 +12,52 @@
 
 					<separator id="ElementsSeparate1" />
 
-					<button id="HarveyBall0" getImage="getImage" label="0% Harvey Ball" showLabel="false" keytip="h0" />
-					<button id="HarveyBall2" getImage="getImage" label="50% Harvey ball" showLabel="false" keytip="h2" />
-					<button id="HarveyBall4" getImage="getImage" label="100% Harvey ball" showLabel="false" keytip="h4" />
-					<button id="HarveyBall1" getImage="getImage" label="25% Harvey ball" showLabel="false" keytip="h1" />
-					<button id="HarveyBall3" getImage="getImage" label="75% Harvey ball" showLabel="false" keytip="h3" />
-					<button id="HarveyBallCustom" getImage="getImage" label="Custom Harvey ball" showLabel="false" keytip="hc" />
+					<button id="HarveyBall0" getImage="getImage" label="0% Harvey Ball" showLabel="false" keytip="h0" onAction="HarveyBall0" />
+					<button id="HarveyBall1" getImage="getImage" label="25% Harvey ball" showLabel="false" keytip="h1" onAction="HarveyBall1" />
+					<button id="HarveyBall2" getImage="getImage" label="50% Harvey ball" showLabel="false" keytip="h2" onAction="HarveyBall2" />
+					<button id="HarveyBall3" getImage="getImage" label="75% Harvey ball" showLabel="false" keytip="h3" onAction="HarveyBall3" />
+					<button id="HarveyBall4" getImage="getImage" label="100% Harvey ball" showLabel="false" keytip="h4" onAction="HarveyBall4" />
+					<button id="HarveyBallCustom" getImage="getImage" label="Custom Harvey ball" showLabel="false" keytip="hc" onAction="HarveyBallCustom" />
 
 					<separator id="ElementsSeparate2" />
 
-					<button id="IconCheck" image="IconCheck.svg" label="Check" showLabel="false" keytip="ic" />
-					<button id="IconCross" image="IconCross.svg" label="Cross" showLabel="false" keytip="ix" />
-					<button id="IconQuestion" image="IconQuestion.svg" label="Question mark" showLabel="false" keytip="iq" />
-					<button id="IconPlus" image="IconPlus.svg" label="Plus sign" showLabel="false" keytip="ip" />
-					<button id="IconMinus" image="IconMinus.svg" label="Minus sign" showLabel="false" keytip="im" />
-					<button id="IconEllipses" image="IconEllipses.svg" label="Ellipses" showLabel="false" keytip="ie" />
+					<button id="StoplightRed" getImage="getImage" label="Red stoplight" showLabel="false" keytip="slr" onAction="StoplightRed" />
+					<button id="StoplightAmber" getImage="getImage" label="Amber stoplight" showLabel="false" keytip="sla" onAction="StoplightAmber" />
+					<button id="StoplightGreen" getImage="getImage" label="Green stoplight" showLabel="false" keytip="slg" onAction="StoplightGreen" />
 
 					<separator id="ElementsSeparate3" />
 
-					<button id="ArrowNW" image="ArrowNW.svg" label="NW arrow" showLabel="false" keytip="anw" />
-					<button id="ArrowW" image="ArrowW.svg" label="W arrow" showLabel="false" keytip="aww" />
-					<button id="ArrowSW" image="ArrowSW.svg" label="SW arrow" showLabel="false" keytip="asw" />
+					<button id="IconCheck" getImage="getImage" label="Check" showLabel="false" keytip="ic" onAction="IconCheck" />
+					<button id="IconPlus" getImage="getImage" label="Plus sign" showLabel="false" keytip="ip" onAction="IconPlus" />
+					<button id="IconQuestion" getImage="getImage" label="Question mark" showLabel="false" keytip="iq" onAction="IconQuestion" />
+					<button id="IconCross" getImage="getImage" label="Cross" showLabel="false" keytip="ix" onAction="IconCross" />
+					<button id="IconMinus" getImage="getImage" label="Minus sign" showLabel="false" keytip="im" onAction="IconMinus" />
+					<button id="IconEllipsis" getImage="getImage" label="Ellipsis" showLabel="false" keytip="ie" onAction="IconEllipsis" />
 
-					<button id="ArrowN" image="ArrowN.svg" label="N arrow" showLabel="false" keytip="ann" />
-					<button id="ArrowBlank" image="Blank.svg"/>
-					<button id="ArrowS" image="ArrowS.svg" label="S arrow" showLabel="false" keytip="ass" />
+					<separator id="ElementsSeparate4" />
 
-					<button id="ArrowNE" image="ArrowNE.svg" label="NE arrow" showLabel="false" keytip="ane" />
-					<button id="ArrowE" image="ArrowE.svg" label="E arrow" showLabel="false" keytip="aee" />
-					<button id="ArrowSE" image="ArrowSE.svg" label="SE arrow" showLabel="false" keytip="ase" />
+					<button id="ArrowNW" getImage="getImage" label="NW arrow" showLabel="false" keytip="anw" onAction="ArrowNW" />
+					<button id="ArrowW" getImage="getImage" label="W arrow" showLabel="false" keytip="aww" onAction="ArrowW" />
+					<button id="ArrowSW" getImage="getImage" label="SW arrow" showLabel="false" keytip="asw" onAction="ArrowSW" />
+
+					<button id="ArrowN" getImage="getImage" label="N arrow" showLabel="false" keytip="ann" onAction="ArrowN" />
+					<button id="Blank" getImage="getImage" enabled="false" />
+					<button id="ArrowS" getImage="getImage" label="S arrow" showLabel="false" keytip="ass" onAction="ArrowS" />
+
+					<button id="ArrowNE" getImage="getImage" label="NE arrow" showLabel="false" keytip="ane" onAction="ArrowNE" />
+					<button id="ArrowE" getImage="getImage" label="E arrow" showLabel="false" keytip="aee" onAction="ArrowE" />
+					<button id="ArrowSE" getImage="getImage" label="SE arrow" showLabel="false" keytip="ase" onAction="ArrowSE" />
 				</group>
 
 				<group id="GroupArrange" label="Arrange">
-					<button id="DecksterityAlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="al" />
-					<button id="DecksterityAlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="ab"/>
-					<button idMso="ObjectFlipHorizontal" showLabel="false" keytip="fh"/>
-					<button id="DecksterityAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="ac"/>
-					<button id="DecksterityAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="am"/>
+					<button id="AlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="al" onAction="AlignLeft" />
+					<button id="AlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="ab" onAction="AlignBottom" />
+					<button idMso="ObjectFlipHorizontal" showLabel="false" keytip="fh" />
+					<button id="AlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="ac" onAction="AlignCenter" />
+					<button id="AlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="am" onAction="AlignMiddle" />
 					<button idMso="ObjectFlipVertical" showLabel="false" keytip="fv"/>
-					<button id="DecksterityAlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="ar"/>
-					<button id="DecksterityAlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="at"/>
+					<button id="AlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="ar" onAction="AlignRight" />
+					<button id="AlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="at" onAction="AlignTop" />
 					<menu id="ObjectsResizeAndSpaceEvenly" label="Resize and space evenly" imageMso="AlignRelativeToPage" showLabel="false" keytip="rse" >
 						<button id="ResizeAndSpaceEvenHorizontal" label="Resize and space horizontally (equal spacing)" onAction="ResizeAndSpaceEvenHorizontal" />
 						<button id="ResizeAndSpaceEvenHorizontalPreserveFirst" label="Resize and space horizontally (preserve first)" onAction="ResizeAndSpaceEvenHorizontalPreserveFirst" />
@@ -63,8 +69,8 @@
 
 					<separator id="ArrangeSeparate1" />
 
-					<button id="DecksterityDistributeHorizontally" imageMso="AlignDistributeHorizontally" label="Distribute horizontally" showLabel="false" keytip="dh" />
-					<button id="DecksterityDistributeVertically" imageMso="AlignDistributeVertically" label="Distribute vertically" showLabel="false" keytip="dv" />
+					<button id="DistributeHorizontally" imageMso="AlignDistributeHorizontally" label="Distribute horizontally" showLabel="false" keytip="dh" onAction="DistributeHorizontally" />
+					<button id="DistributeVertically" imageMso="AlignDistributeVertically" label="Distribute vertically" showLabel="false" keytip="dv" onAction="DistributeVertically" />
 
 					<separator id="ArrangeSeparate2" />
 
@@ -77,26 +83,26 @@
 
 					<separator id="ArrangeSeparate3" />
 
-					<button id="ObjectsSameHeight" imageMso="RowHeight" onAction="ObjectsSameHeight" label="Set same height" showLabel="false" keytip="sh" />
-					<button id="ObjectsSameWidth" imageMso="ColumnWidth" onAction="ObjectsSameWidth" label="Set same width" showLabel="false" keytip="sw" />
+					<button id="ObjectsSameHeight" imageMso="RowHeight" label="Set same height" showLabel="false" keytip="sh" onAction="SameHeight" />
+					<button id="ObjectsSameWidth" imageMso="ColumnWidth" label="Set same width" showLabel="false" keytip="sw" onAction="SameWidth" />
 				</group>
 
 			</tab>
 
 			<tab id="TabDecksterityExpert" insertBeforeMso="TabHome" label="Decksterity Expert" keytip="P">
 				<group id="GroupExpertAlign" label="Align" >
-					<button id="PrimaryAlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="AL" />
-					<button id="PrimaryAlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="AB"/>
+					<button id="PrimaryAlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="al" onAction="PrimaryAlignLeft" />
+					<button id="PrimaryAlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="ab" onAction="PrimaryAlignBottom" />
 
-					<button id="PrimaryAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="AC"/>
-					<button id="PrimaryAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="AM"/>
+					<button id="PrimaryAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="ac" onAction="PrimaryAlignCenter" />
+					<button id="PrimaryAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="am" onAction="PrimaryAlignMiddle" />
 
-					<button id="PrimaryAlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="AR"/>
-					<button id="PrimaryAlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="AT"/>
+					<button id="PrimaryAlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="ar" onAction="PrimaryAlignRight" />
+					<button id="PrimaryAlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="at" onAction="PrimaryAlignTop" />
 				</group>
 
 				<group id="GroupExpertSwap" label="Swap" >
-					<button id="ObjectsSwapPosition" imageMso="CircularReferences" label="Swap position" showLabel="false" onAction="ObjectsSwapPositionCentered" keytip="SW" />
+					<button id="ObjectsSwapPosition" imageMso="CircularReferences" label="Swap position" showLabel="false" keytip="sw" onAction="ObjectsSwapPositionCentered" />
 				</group>
 			</tab>
 		</tabs>

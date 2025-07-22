@@ -118,8 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ArrowE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowNE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowNE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowNW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowNW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowSE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowSW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\ArrowW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Blank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\assets\Blank2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="HarveyBall0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\HarveyBall0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -138,5 +162,32 @@
   </data>
   <data name="HarveyBallCustom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\HarveyBallCustom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\IconCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\IconCross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconEllipsis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\IconEllipsis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\IconMinus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\IconPlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconQuestion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\IconQuestion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StoplightAmber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\StoplightAmber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StoplightGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\StoplightGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StoplightRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\StoplightRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
