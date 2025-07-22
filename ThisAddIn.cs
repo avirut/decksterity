@@ -18,6 +18,11 @@ namespace decksterity
         {
         }
 
+        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            return new DecksterityRibbon();
+        }
+
         #region VSTO generated code
 
         /// <summary>

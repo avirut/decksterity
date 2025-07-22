@@ -43,7 +43,7 @@ namespace decksterity
 
         public string GetCustomUI(string ribbonID)
         {
-            return GetResourceText("decksterity.Ribbon1.xml");
+            return GetResourceText("decksterity.DecksterityRibbon.xml");
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace decksterity
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUI)
         {
-            this.ribbon = ribbonUI;
+            this.ribbon = ribbonUI; 
         }
 
         public Bitmap GetImage(Office.IRibbonControl control)

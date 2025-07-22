@@ -28,7 +28,7 @@
 					<button id="IconMinus" image="IconMinus.svg" label="Minus sign" showLabel="false" keytip="im" />
 					<button id="IconEllipses" image="IconEllipses.svg" label="Ellipses" showLabel="false" keytip="ie" />
 
-					<separator id="EleemntsSeparate3" />
+					<separator id="ElementsSeparate3" />
 
 					<button id="ArrowNW" image="ArrowNW.svg" label="NW arrow" showLabel="false" keytip="anw" />
 					<button id="ArrowW" image="ArrowW.svg" label="W arrow" showLabel="false" keytip="aww" />
