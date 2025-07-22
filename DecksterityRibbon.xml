@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+	<ribbon>
+		<tabs>
+			<tab id="TabDecksterity" insertBeforeMso="TabHome" label="Decksterity" keytip="X">
+				
+				<group id="GroupElements" label="Elements">
+					<gallery idMso="SlideNewGalleryInsert" size="large" />
+					<gallery idMso="TableInsertGallery" size="large" />
+					<gallery idMso="ShapesInsertGallery" size="large" />
+					<button idMso="IconInsertFromFile" size="large" />
+
+					<separator id="ElementsSeparate1" />
+
+					<button id="HarveyBall0" getImage="getImage" label="0% Harvey Ball" showLabel="false" keytip="h0" />
+					<button id="HarveyBall2" getImage="getImage" label="50% Harvey ball" showLabel="false" keytip="h2" />
+					<button id="HarveyBall4" getImage="getImage" label="100% Harvey ball" showLabel="false" keytip="h4" />
+					<button id="HarveyBall1" getImage="getImage" label="25% Harvey ball" showLabel="false" keytip="h1" />
+					<button id="HarveyBall3" getImage="getImage" label="75% Harvey ball" showLabel="false" keytip="h3" />
+					<button id="HarveyBallCustom" getImage="getImage" label="Custom Harvey ball" showLabel="false" keytip="hc" />
+
+					<separator id="ElementsSeparate2" />
+
+					<button id="IconCheck" image="IconCheck.svg" label="Check" showLabel="false" keytip="ic" />
+					<button id="IconCross" image="IconCross.svg" label="Cross" showLabel="false" keytip="ix" />
+					<button id="IconQuestion" image="IconQuestion.svg" label="Question mark" showLabel="false" keytip="iq" />
+					<button id="IconPlus" image="IconPlus.svg" label="Plus sign" showLabel="false" keytip="ip" />
+					<button id="IconMinus" image="IconMinus.svg" label="Minus sign" showLabel="false" keytip="im" />
+					<button id="IconEllipses" image="IconEllipses.svg" label="Ellipses" showLabel="false" keytip="ie" />
+
+					<separator id="EleemntsSeparate3" />
+
+					<button id="ArrowNW" image="ArrowNW.svg" label="NW arrow" showLabel="false" keytip="anw" />
+					<button id="ArrowW" image="ArrowW.svg" label="W arrow" showLabel="false" keytip="aww" />
+					<button id="ArrowSW" image="ArrowSW.svg" label="SW arrow" showLabel="false" keytip="asw" />
+
+					<button id="ArrowN" image="ArrowN.svg" label="N arrow" showLabel="false" keytip="ann" />
+					<button id="ArrowBlank" image="Blank.svg"/>
+					<button id="ArrowS" image="ArrowS.svg" label="S arrow" showLabel="false" keytip="ass" />
+
+					<button id="ArrowNE" image="ArrowNE.svg" label="NE arrow" showLabel="false" keytip="ane" />
+					<button id="ArrowE" image="ArrowE.svg" label="E arrow" showLabel="false" keytip="aee" />
+					<button id="ArrowSE" image="ArrowSE.svg" label="SE arrow" showLabel="false" keytip="ase" />
+				</group>
+
+				<group id="GroupArrange" label="Arrange">
+					<button id="DecksterityAlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="al" />
+					<button id="DecksterityAlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="ab"/>
+					<button idMso="ObjectFlipHorizontal" showLabel="false" keytip="fh"/>
+					<button id="DecksterityAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="ac"/>
+					<button id="DecksterityAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="am"/>
+					<button idMso="ObjectFlipVertical" showLabel="false" keytip="fv"/>
+					<button id="DecksterityAlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="ar"/>
+					<button id="DecksterityAlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="at"/>
+					<menu id="ObjectsResizeAndSpaceEvenly" label="Resize and space evenly" imageMso="AlignRelativeToPage" showLabel="false" keytip="rse" >
+						<button id="ResizeAndSpaceEvenHorizontal" label="Resize and space horizontally (equal spacing)" onAction="ResizeAndSpaceEvenHorizontal" />
+						<button id="ResizeAndSpaceEvenHorizontalPreserveFirst" label="Resize and space horizontally (preserve first)" onAction="ResizeAndSpaceEvenHorizontalPreserveFirst" />
+						<button id="ResizeAndSpaceEvenHorizontalPreserveLast" label="Resize and space horizontally (preserve last)" onAction="ResizeAndSpaceEvenHorizontalPreserveLast" />
+						<button id="ResizeAndSpaceEvenVertical" label="Resize and space vertically (equal spacing)" onAction="ResizeAndSpaceEvenVertical" />
+						<button id="ResizeAndSpaceEvenVerticalPreserveFirst" label="Resize and space vertically (preserve first)" onAction="ResizeAndSpaceEvenVerticalPreserveFirst" />
+						<button id="ResizeAndSpaceEvenVerticalPreserveLast" label="Resize and space vertically (preserve last)" onAction="ResizeAndSpaceEvenVerticalPreserveLast" />
+					</menu>
+
+					<separator id="ArrangeSeparate1" />
+
+					<button id="DecksterityDistributeHorizontally" imageMso="AlignDistributeHorizontally" label="Distribute horizontally" showLabel="false" keytip="dh" />
+					<button id="DecksterityDistributeVertically" imageMso="AlignDistributeVertically" label="Distribute vertically" showLabel="false" keytip="dv" />
+
+					<separator id="ArrangeSeparate2" />
+
+					<button idMso="ObjectBringToFront" showLabel="false" keytip="btf" />
+					<button idMso="ObjectBringForward" showLabel="false" keytip="bf" />
+					<button idMso="ObjectRotateLeft90" showLabel="false" keytip="rl" />
+					<button idMso="ObjectSendToBack" showLabel="false" keytip="stb" />
+					<button idMso="ObjectSendBackward" showLabel="false" keytip="sb" />
+					<button idMso="ObjectRotateRight90" showLabel="false" keytip="rr" />
+
+					<separator id="ArrangeSeparate3" />
+
+					<button id="ObjectsSameHeight" imageMso="RowHeight" onAction="ObjectsSameHeight" label="Set same height" showLabel="false" keytip="sh" />
+					<button id="ObjectsSameWidth" imageMso="ColumnWidth" onAction="ObjectsSameWidth" label="Set same width" showLabel="false" keytip="sw" />
+				</group>
+
+			</tab>
+
+			<tab id="TabDecksterityExpert" insertBeforeMso="TabHome" label="Decksterity Expert" keytip="P">
+				<group id="GroupExpertAlign" label="Align" >
+					<button id="PrimaryAlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="AL" />
+					<button id="PrimaryAlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="AB"/>
+
+					<button id="PrimaryAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="AC"/>
+					<button id="PrimaryAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="AM"/>
+
+					<button id="PrimaryAlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="AR"/>
+					<button id="PrimaryAlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="AT"/>
+				</group>
+
+				<group id="GroupExpertSwap" label="Swap" >
+					<button id="ObjectsSwapPosition" imageMso="CircularReferences" label="Swap position" showLabel="false" onAction="ObjectsSwapPositionCentered" keytip="SW" />
+				</group>
+			</tab>
+		</tabs>
+	</ribbon>
+</customUI>
