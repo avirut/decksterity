@@ -13,8 +13,8 @@ namespace decksterity
         public static void InsertHarveyBall(int value)
         {
             // Unicode Harvey Balls: 0-4
-            // 0: ⭘ (U+2B58), 1: ◔ (U+25D4), 2: ◑ (U+25D1), 3: ◕ (U+25D5), 4: ⬤ (U+2B24)
-            string[] harveyBalls = { "\u2B58", "\u25D4", "\u25D1", "\u25D5", "\u2B24" };
+            // 0: ⭘ (U+2B58), 1: ◔ (U+25D4), 2: ◑ (U+25D1), 3: ◕ (U+25D5), 4: ● (U+25CF)
+            string[] harveyBalls = { "\u2B58", "\u25D4", "\u25D1", "\u25D5", "\u25CF" };
             if (value < 0 || value > 4) return;
             string harveyBall = harveyBalls[value];
 
@@ -24,6 +24,7 @@ namespace decksterity
             {
                 // Insert at cursor in text box
                 selection.TextRange.Text = harveyBall;
+                selection.TextRange.Font.Name = "Segoe UI Symbol";
             }
             else if (selection.Type == PpSelectionType.ppSelectionSlides)
             {
@@ -31,7 +32,9 @@ namespace decksterity
                 var slide = selection.SlideRange[1];
                 float left = app.ActivePresentation.PageSetup.SlideWidth / 2 - 20;
                 float top = app.ActivePresentation.PageSetup.SlideHeight / 2 - 20;
-                slide.Shapes.AddTextbox(Office.MsoTextOrientation.msoTextOrientationHorizontal, left, top, 40, 40).TextFrame.TextRange.Text = harveyBall;
+                var textbox = slide.Shapes.AddTextbox(Office.MsoTextOrientation.msoTextOrientationHorizontal, left, top, 40, 40);
+                textbox.TextFrame.TextRange.Text = harveyBall;
+                textbox.TextFrame.TextRange.Font.Name = "Segoe UI Symbol";
             }
             else if (selection.Type == PpSelectionType.ppSelectionShapes)
             {
@@ -41,6 +44,7 @@ namespace decksterity
                     if (shape.HasTextFrame == Office.MsoTriState.msoTrue && shape.TextFrame.HasText == Office.MsoTriState.msoTrue)
                     {
                         shape.TextFrame.TextRange.Text = harveyBall;
+                        shape.TextFrame.TextRange.Font.Name = "Segoe UI Symbol";
                     }
                 }
             }
