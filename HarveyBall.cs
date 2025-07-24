@@ -1,0 +1,49 @@
+﻿using System;
+using Microsoft.Office.Interop.PowerPoint;
+using Office = Microsoft.Office.Core;
+
+namespace decksterity
+{
+    public static class HarveyBall
+    {
+        /// <summary>
+        /// Inserts a Harvey Ball symbol into the current PowerPoint selection.
+        /// </summary>
+        /// <param name="value">Value from 0 to 4 indicating the Harvey Ball fill level.</param>
+        public static void InsertHarveyBall(int value)
+        {
+            // Unicode Harvey Balls: 0-4
+            // 0: ⭘ (U+2B58), 1: ◔ (U+25D4), 2: ◑ (U+25D1), 3: ◕ (U+25D5), 4: ⬤ (U+2B24)
+            string[] harveyBalls = { "\u2B58", "\u25D4", "\u25D1", "\u25D5", "\u2B24" };
+            if (value < 0 || value > 4) return;
+            string harveyBall = harveyBalls[value];
+
+            var app = (Application)System.Runtime.InteropServices.Marshal.GetActiveObject("PowerPoint.Application");
+            var selection = app.ActiveWindow.Selection;
+            if (selection.Type == PpSelectionType.ppSelectionText)
+            {
+                // Insert at cursor in text box
+                selection.TextRange.Text = harveyBall;
+            }
+            else if (selection.Type == PpSelectionType.ppSelectionSlides)
+            {
+                // Insert as new shape in the center of the selected slide
+                var slide = selection.SlideRange[1];
+                float left = app.ActivePresentation.PageSetup.SlideWidth / 2 - 20;
+                float top = app.ActivePresentation.PageSetup.SlideHeight / 2 - 20;
+                slide.Shapes.AddTextbox(Office.MsoTextOrientation.msoTextOrientationHorizontal, left, top, 40, 40).TextFrame.TextRange.Text = harveyBall;
+            }
+            else if (selection.Type == PpSelectionType.ppSelectionShapes)
+            {
+                // Replace text in selected shape(s)
+                foreach (Shape shape in selection.ShapeRange)
+                {
+                    if (shape.HasTextFrame == Office.MsoTriState.msoTrue && shape.TextFrame.HasText == Office.MsoTriState.msoTrue)
+                    {
+                        shape.TextFrame.TextRange.Text = harveyBall;
+                    }
+                }
+            }
+        }
+    }
+}

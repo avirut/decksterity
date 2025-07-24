@@ -88,6 +88,54 @@ namespace decksterity
             }
         }
 
+        // Ribbon onAction callback headers generated from XML
+        public void HarveyBall0(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(0); }
+        public void HarveyBall1(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(1); }
+        public void HarveyBall2(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(2); }
+        public void HarveyBall3(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(3); }
+        public void HarveyBall4(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(4); }
+        public void HarveyBallCustom(Office.IRibbonControl control) {}
+        public void StoplightRed(Office.IRibbonControl control) {}
+        public void StoplightAmber(Office.IRibbonControl control) {}
+        public void StoplightGreen(Office.IRibbonControl control) {}
+        public void IconCheck(Office.IRibbonControl control) {}
+        public void IconPlus(Office.IRibbonControl control) {}
+        public void IconQuestion(Office.IRibbonControl control) {}
+        public void IconCross(Office.IRibbonControl control) {}
+        public void IconMinus(Office.IRibbonControl control) {}
+        public void IconEllipsis(Office.IRibbonControl control) {}
+        public void ArrowNW(Office.IRibbonControl control) {}
+        public void ArrowW(Office.IRibbonControl control) {}
+        public void ArrowSW(Office.IRibbonControl control) {}
+        public void ArrowN(Office.IRibbonControl control) {}
+        public void ArrowS(Office.IRibbonControl control) {}
+        public void ArrowNE(Office.IRibbonControl control) {}
+        public void ArrowE(Office.IRibbonControl control) {}
+        public void ArrowSE(Office.IRibbonControl control) {}
+        public void AlignLeft(Office.IRibbonControl control) {}
+        public void AlignBottom(Office.IRibbonControl control) {}
+        public void AlignCenter(Office.IRibbonControl control) {}
+        public void AlignMiddle(Office.IRibbonControl control) {}
+        public void AlignRight(Office.IRibbonControl control) {}
+        public void AlignTop(Office.IRibbonControl control) {}
+        public void ResizeAndSpaceEvenHorizontal(Office.IRibbonControl control) {}
+        public void ResizeAndSpaceEvenHorizontalPreserveFirst(Office.IRibbonControl control) {}
+        public void ResizeAndSpaceEvenHorizontalPreserveLast(Office.IRibbonControl control) {}
+        public void ResizeAndSpaceEvenVertical(Office.IRibbonControl control) {}
+        public void ResizeAndSpaceEvenVerticalPreserveFirst(Office.IRibbonControl control) {}
+        public void ResizeAndSpaceEvenVerticalPreserveLast(Office.IRibbonControl control) {}
+        public void DistributeHorizontally(Office.IRibbonControl control) {}
+        public void DistributeVertically(Office.IRibbonControl control) {}
+        public void SameHeight(Office.IRibbonControl control) {}
+        public void SameWidth(Office.IRibbonControl control) {}
+        public void PrimaryAlignLeft(Office.IRibbonControl control) {}
+        public void PrimaryAlignBottom(Office.IRibbonControl control) {}
+        public void PrimaryAlignCenter(Office.IRibbonControl control) {}
+        public void PrimaryAlignMiddle(Office.IRibbonControl control) {}
+        public void PrimaryAlignRight(Office.IRibbonControl control) {}
+        public void PrimaryAlignTop(Office.IRibbonControl control) {}
+        public void ObjectsSwapPositionCentered(Office.IRibbonControl control) {}
+
         #endregion
 
         #region Helpers
@@ -110,6 +158,24 @@ namespace decksterity
                 }
             }
             return null;
+        }
+
+        private void InsertStoplight(int value)
+        {
+            // Implementation for inserting a Stoplight with the specified value
+            // This method should interact with the Excel application to insert the Stoplight
+        }
+
+        private void InsertIcon(string iconName)
+        {
+            // Implementation for inserting an icon based on the iconName
+            // This method should interact with the Excel application to insert the specified icon
+        }
+
+        private void InsertArrow(string direction)
+        {
+            // Implementation for inserting an arrow based on the direction
+            // This method should interact with the Excel application to insert the specified arrow
         }
 
         #endregion
