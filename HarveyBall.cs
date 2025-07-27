@@ -50,4 +50,75 @@ namespace decksterity
             }
         }
     }
+
+    public static class ElementHelper
+    {
+        public static void InsertElement(string element)
+        {
+            var app = (Application)System.Runtime.InteropServices.Marshal.GetActiveObject("PowerPoint.Application");
+            var selection = app.ActiveWindow.Selection;
+
+            // Check if selection is in a table cell or multiple table cells
+            if (selection.Type == PpSelectionType.ppSelectionShapes)
+            {
+                Shape tableShape = null;
+                int row = -1, col = -1;
+                foreach (Shape shape in selection.ShapeRange)
+                {
+                    if (shape.HasTable == Office.MsoTriState.msoTrue)
+                    {
+                        tableShape = shape;
+                        // Try to get selected cell (if possible)
+                        if (shape.Table.SelectedCell != null)
+                        {
+                            row = shape.Table.SelectedCell.Row;
+                            col = shape.Table.SelectedCell.Column;
+                        }
+                        break;
+                    }
+                }
+                if (tableShape != null)
+                {
+                    InsertElementIntoTable(element, tableShape, row, col);
+                    return;
+                }
+            }
+            // Check if selection is in a text box or shape with text
+            if (selection.Type == PpSelectionType.ppSelectionText)
+            {
+                InsertElementIntoText(element);
+                return;
+            }
+            else if (selection.Type == PpSelectionType.ppSelectionShapes)
+            {
+                foreach (Shape shape in selection.ShapeRange)
+                {
+                    if (shape.HasTextFrame == Office.MsoTriState.msoTrue && shape.TextFrame.HasText == Office.MsoTriState.msoTrue)
+                    {
+                        InsertElementIntoText(element);
+                        return;
+                    }
+                }
+            }
+            // Otherwise, insert as new shape/textbox in the center of the selected slide
+            InsertElementIntoSlide(element);
+        }
+
+        public static void InsertElementIntoTable(string element)
+        {
+
+        }
+
+        public static void InsertElementIntoText(string element)
+        {
+
+        }
+
+        public static void InsertElementIntoSlide(string element)
+        {
+
+        }
+    }
+
+
 }
