@@ -51,7 +51,7 @@ namespace decksterity
         }
     }
 
-    public static class ElementHelper
+   /* public static class ElementHelper
     {
         public static void InsertElement(string element)
         {
@@ -118,7 +118,5 @@ namespace decksterity
         {
 
         }
-    }
-
-
+    }*/
 }
