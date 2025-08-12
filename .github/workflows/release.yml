@@ -25,6 +25,23 @@ jobs:
     - name: Restore NuGet packages
       run: nuget restore decksterity.sln
       
+    - name: Create temporary certificate for build
+      shell: powershell
+      run: |
+        # Create self-signed certificate for VSTO build requirements
+        $cert = New-SelfSignedCertificate -Subject "CN=Decksterity" -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsage DigitalSignature -Type CodeSigning -NotAfter (Get-Date).AddYears(1)
+        
+        # Export to PFX without password 
+        $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx)
+        [System.IO.File]::WriteAllBytes("decksterity_TemporaryKey.pfx", $certBytes)
+        
+        # Update project file with certificate thumbprint for build
+        $projectContent = Get-Content "decksterity.csproj" -Raw
+        $projectContent = $projectContent -replace '<ManifestCertificateThumbprint></ManifestCertificateThumbprint>', "<ManifestCertificateThumbprint>$($cert.Thumbprint)</ManifestCertificateThumbprint>"
+        Set-Content "decksterity.csproj" -Value $projectContent -NoNewline
+        
+        Write-Host "✅ Build certificate created with thumbprint: $($cert.Thumbprint)" -ForegroundColor Green
+        
     - name: Build solution
       run: msbuild decksterity.sln /p:Configuration=Release
       

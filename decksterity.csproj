@@ -35,6 +35,9 @@
     <FriendlyName>Decksterity PowerPoint Add-in</FriendlyName>
     <OfficeApplicationDescription>Enhanced slide elements and layout tools for PowerPoint</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
+    <SignManifests>true</SignManifests>
+    <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint></ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <!--
