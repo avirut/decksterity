@@ -37,6 +37,10 @@ jobs:
         $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx)
         [System.IO.File]::WriteAllBytes("decksterity_TemporaryKey.pfx", $certBytes)
         
+        # Also export as .cer for easy installation
+        $cerBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert)
+        [System.IO.File]::WriteAllBytes("decksterity_Certificate.cer", $cerBytes)
+        
         # Update project file with certificate thumbprint
         $projectContent = Get-Content "decksterity.csproj" -Raw
         $projectContent = $projectContent -replace '<ManifestCertificateThumbprint></ManifestCertificateThumbprint>', "<ManifestCertificateThumbprint>$($cert.Thumbprint)</ManifestCertificateThumbprint>"
@@ -62,6 +66,9 @@ jobs:
         # Copy published files
         Copy-Item -Path "bin\Release\app.publish\*" -Destination "deployment\" -Recurse -Force
         
+        # Copy certificate for user download
+        Copy-Item -Path "decksterity_Certificate.cer" -Destination "deployment\" -Force
+        
         # Create index.html for user-friendly access
         @"
         <!DOCTYPE html>
@@ -79,7 +86,11 @@ jobs:
             <p>Enhance your PowerPoint presentations with visual elements and layout tools.</p>
             
             <h2>Installation</h2>
-            <p>Click the button below to install or update the Decksterity add-in:</p>
+            <p><strong>Step 1:</strong> Install the certificate to trust the add-in:</p>
+            <a href="decksterity_Certificate.cer" style="background: #d83b01; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0;">Download & Install Certificate</a>
+            <p><small>Right-click the downloaded .cer file → Install Certificate → Local Machine → Trusted Publishers</small></p>
+            
+            <p><strong>Step 2:</strong> Install the add-in:</p>
             <a href="setup.exe" class="install-button">Install Decksterity</a>
             
             <h2>Features</h2>
