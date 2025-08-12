@@ -30,9 +30,15 @@ jobs:
         $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx)
         [System.IO.File]::WriteAllBytes("decksterity_TemporaryKey.pfx", $certBytes)
         
+        # Update project file with certificate thumbprint
+        $projectContent = Get-Content "decksterity.csproj" -Raw
+        $projectContent = $projectContent -replace '<ManifestCertificateThumbprint></ManifestCertificateThumbprint>', "<ManifestCertificateThumbprint>$($cert.Thumbprint)</ManifestCertificateThumbprint>"
+        Set-Content "decksterity.csproj" -Value $projectContent -NoNewline
+        
         # Display certificate info
         Write-Host "Certificate created with thumbprint: $($cert.Thumbprint)"
         Write-Host "Certificate subject: $($cert.Subject)"
+        Write-Host "Updated project file with thumbprint"
         
     - name: Build solution
       run: msbuild decksterity.sln /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/"
