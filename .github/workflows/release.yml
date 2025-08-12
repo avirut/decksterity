@@ -129,9 +129,6 @@ jobs:
         "@
         
         # Create release using GitHub CLI
-        gh release create $tagName DecksterityInstaller.zip `
-          --title $releaseName `
-          --notes $releaseBody `
-          --repo $env:GITHUB_REPOSITORY
+        gh release create $tagName DecksterityInstaller.zip --title $releaseName --notes $releaseBody --repo $env:GITHUB_REPOSITORY
         
         Write-Host "SUCCESS: Release created successfully: $releaseName" -ForegroundColor Green
