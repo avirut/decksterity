@@ -89,29 +89,29 @@ namespace decksterity
         }
 
         // Ribbon onAction callback headers generated from XML
-        public void HarveyBall0(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(0); }
-        public void HarveyBall1(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(1); }
-        public void HarveyBall2(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(2); }
-        public void HarveyBall3(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(3); }
-        public void HarveyBall4(Office.IRibbonControl control) { HarveyBall.InsertHarveyBall(4); }
-        public void HarveyBallCustom(Office.IRibbonControl control) {}
-        public void StoplightRed(Office.IRibbonControl control) {}
-        public void StoplightAmber(Office.IRibbonControl control) {}
-        public void StoplightGreen(Office.IRibbonControl control) {}
-        public void IconCheck(Office.IRibbonControl control) {}
-        public void IconPlus(Office.IRibbonControl control) {}
-        public void IconQuestion(Office.IRibbonControl control) {}
-        public void IconCross(Office.IRibbonControl control) {}
-        public void IconMinus(Office.IRibbonControl control) {}
-        public void IconEllipsis(Office.IRibbonControl control) {}
-        public void ArrowNW(Office.IRibbonControl control) {}
-        public void ArrowW(Office.IRibbonControl control) {}
-        public void ArrowSW(Office.IRibbonControl control) {}
-        public void ArrowN(Office.IRibbonControl control) {}
-        public void ArrowS(Office.IRibbonControl control) {}
-        public void ArrowNE(Office.IRibbonControl control) {}
-        public void ArrowE(Office.IRibbonControl control) {}
-        public void ArrowSE(Office.IRibbonControl control) {}
+        public void HarveyBall0(Office.IRibbonControl control) { ElementHelper.InsertElement("⭘"); }
+        public void HarveyBall1(Office.IRibbonControl control) { ElementHelper.InsertElement("◔"); }
+        public void HarveyBall2(Office.IRibbonControl control) { ElementHelper.InsertElement("◑"); }
+        public void HarveyBall3(Office.IRibbonControl control) { ElementHelper.InsertElement("◕"); }
+        public void HarveyBall4(Office.IRibbonControl control) { ElementHelper.InsertElement("●"); }
+        // public void HarveyBallCustom(Office.IRibbonControl control) {}
+        public void StoplightRed(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0xab0e04); }
+        public void StoplightAmber(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0xe2ad00); }
+        public void StoplightGreen(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0x007748); }
+        public void IconCheck(Office.IRibbonControl control) { ElementHelper.InsertElement("✔"); }
+        public void IconPlus(Office.IRibbonControl control) { ElementHelper.InsertElement("➕"); }
+        public void IconQuestion(Office.IRibbonControl control) { ElementHelper.InsertElement("❓"); }
+        public void IconCross(Office.IRibbonControl control) { ElementHelper.InsertElement("✘"); }
+        public void IconMinus(Office.IRibbonControl control) { ElementHelper.InsertElement("➖"); }
+        public void IconEllipsis(Office.IRibbonControl control) { ElementHelper.InsertElement("…"); }
+        public void ArrowNW(Office.IRibbonControl control) { ElementHelper.InsertElement("🡼"); }
+        public void ArrowW(Office.IRibbonControl control) { ElementHelper.InsertElement("🡸"); }
+        public void ArrowSW(Office.IRibbonControl control) { ElementHelper.InsertElement("🡿"); }
+        public void ArrowN(Office.IRibbonControl control) { ElementHelper.InsertElement("🡹"); }
+        public void ArrowS(Office.IRibbonControl control) { ElementHelper.InsertElement("🡻"); }
+        public void ArrowNE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡽"); }
+        public void ArrowE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡺"); }
+        public void ArrowSE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡾"); }
         public void AlignLeft(Office.IRibbonControl control) {}
         public void AlignBottom(Office.IRibbonControl control) {}
         public void AlignCenter(Office.IRibbonControl control) {}
@@ -160,23 +160,6 @@ namespace decksterity
             return null;
         }
 
-        private void InsertStoplight(int value)
-        {
-            // Implementation for inserting a Stoplight with the specified value
-            // This method should interact with the Excel application to insert the Stoplight
-        }
-
-        private void InsertIcon(string iconName)
-        {
-            // Implementation for inserting an icon based on the iconName
-            // This method should interact with the Excel application to insert the specified icon
-        }
-
-        private void InsertArrow(string direction)
-        {
-            // Implementation for inserting an arrow based on the direction
-            // This method should interact with the Excel application to insert the specified arrow
-        }
 
         #endregion
     }

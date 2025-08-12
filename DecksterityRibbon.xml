@@ -4,28 +4,30 @@
 		<tabs>
 			<tab id="TabDecksterity" insertBeforeMso="TabHome" label="Decksterity" keytip="X">
 				
-				<group id="GroupElements" label="Elements">
+				<group id="GroupDecksterityInsert" label="Insert">
 					<gallery idMso="SlideNewGalleryInsert" size="large" />
 					<gallery idMso="TableInsertGallery" size="large" />
 					<gallery idMso="ShapesInsertGallery" size="large" />
 					<button idMso="IconInsertFromFile" size="large" />
+				</group>
 
-					<separator id="ElementsSeparate1" />
+				<group idMso="GroupFont" />
 
+				<group id="GroupElements" label="Elements">
 					<button id="HarveyBall0" getImage="getImage" label="0% Harvey Ball" showLabel="false" keytip="h0" onAction="HarveyBall0" />
 					<button id="HarveyBall1" getImage="getImage" label="25% Harvey ball" showLabel="false" keytip="h1" onAction="HarveyBall1" />
 					<button id="HarveyBall2" getImage="getImage" label="50% Harvey ball" showLabel="false" keytip="h2" onAction="HarveyBall2" />
 					<button id="HarveyBall3" getImage="getImage" label="75% Harvey ball" showLabel="false" keytip="h3" onAction="HarveyBall3" />
 					<button id="HarveyBall4" getImage="getImage" label="100% Harvey ball" showLabel="false" keytip="h4" onAction="HarveyBall4" />
-					<button id="HarveyBallCustom" getImage="getImage" label="Custom Harvey ball" showLabel="false" keytip="hc" onAction="HarveyBallCustom" />
+					<!--<button id="HarveyBallCustom" getImage="getImage" label="Custom Harvey ball" showLabel="false" keytip="hc" onAction="HarveyBallCustom" />-->
 
-					<separator id="ElementsSeparate2" />
+					<separator id="ElementsSeparate1" />
 
 					<button id="StoplightRed" getImage="getImage" label="Red stoplight" showLabel="false" keytip="slr" onAction="StoplightRed" />
 					<button id="StoplightAmber" getImage="getImage" label="Amber stoplight" showLabel="false" keytip="sla" onAction="StoplightAmber" />
 					<button id="StoplightGreen" getImage="getImage" label="Green stoplight" showLabel="false" keytip="slg" onAction="StoplightGreen" />
 
-					<separator id="ElementsSeparate3" />
+					<separator id="ElementsSeparate2" />
 
 					<button id="IconCheck" getImage="getImage" label="Check" showLabel="false" keytip="ic" onAction="IconCheck" />
 					<button id="IconPlus" getImage="getImage" label="Plus sign" showLabel="false" keytip="ip" onAction="IconPlus" />
@@ -34,7 +36,7 @@
 					<button id="IconMinus" getImage="getImage" label="Minus sign" showLabel="false" keytip="im" onAction="IconMinus" />
 					<button id="IconEllipsis" getImage="getImage" label="Ellipsis" showLabel="false" keytip="ie" onAction="IconEllipsis" />
 
-					<separator id="ElementsSeparate4" />
+					<separator id="ElementsSeparate3" />
 
 					<button id="ArrowNW" getImage="getImage" label="NW arrow" showLabel="false" keytip="anw" onAction="ArrowNW" />
 					<button id="ArrowW" getImage="getImage" label="W arrow" showLabel="false" keytip="aww" onAction="ArrowW" />

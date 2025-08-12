@@ -205,7 +205,7 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="HarveyBall.cs" />
+    <Compile Include="ElementHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
