@@ -21,6 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 2. **DecksterityRibbon.cs**: Implements IRibbonExtensibility interface, handles ribbon callbacks and image loading
 3. **DecksterityRibbon.xml**: Defines the ribbon UI structure with tabs, groups, and buttons
 4. **ElementHelper.cs**: Centralized utility class for inserting all types of symbols into PowerPoint slides
+5. **AlignmentHelper.cs**: Comprehensive alignment, distribution, and spacing utilities for PowerPoint shapes
 
 ### Key Features
 
@@ -28,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Arrows**: 8-directional arrow symbols (🡹, 🡽, 🡺, 🡾, 🡻, 🡿, 🡸, 🡼)
 - **Icons**: Basic symbols (✔, ✘, ➕, ➖, ❓, …)
 - **Stoplights**: Colored status indicators (red, amber, green solid circles)
-- **Layout Tools**: Alignment, distribution, and arrangement utilities (planned/incomplete)
+- **Layout Tools**: Full alignment, distribution, and arrangement utilities
 
 ### File Structure
 
@@ -37,10 +38,15 @@ decksterity/
 ├── DecksterityRibbon.cs     # Main ribbon implementation
 ├── DecksterityRibbon.xml    # Ribbon UI definition
 ├── ElementHelper.cs         # Centralized element insertion logic
+├── AlignmentHelper.cs       # Alignment, distribution, and spacing utilities
 ├── ThisAddIn.cs            # VSTO add-in entry point
 ├── assets/                 # PNG icons for ribbon buttons
 │   └── generators/         # Jupyter notebooks for icon generation
-└── Properties/             # Assembly info and resources
+├── Properties/             # Assembly info and resources
+├── .github/workflows/      # GitHub Actions for automated deployment
+│   └── deploy.yml          # ClickOnce deployment workflow
+├── README.md              # Public documentation and installation guide
+└── CLAUDE.md              # Development guidance for Claude Code
 ```
 
 ## Development Commands
@@ -124,6 +130,34 @@ ElementHelper.InsertElement("🡹", 0x007748); // Green stoplight
 - Amber: `0xe2ad00` 
 - Green: `0x007748`
 
+### AlignmentHelper Architecture
+
+```csharp
+AlignmentHelper.AlignLeft()                    // Align shapes to left edge
+AlignmentHelper.ResizeAndSpaceEvenly(string)   // Advanced resize and spacing
+```
+
+**Core Features**:
+- Standard alignment (left, center, right, top, middle, bottom)
+- Distribution (horizontal and vertical spacing)
+- Sizing operations (same width, same height)
+- Advanced resize-and-space algorithms with preservation options
+- Primary alignment (align all to first selected shape)
+- Position swapping for two selected objects
+
+**Spacing Algorithms**:
+1. **Even spacing**: All shapes get equal size and spacing
+2. **Preserve first**: First shape size maintained, others adjusted
+3. **Preserve last**: Last shape size maintained, others adjusted
+4. **User input**: Interactive spacing dialog using Microsoft.VisualBasic.InputBox
+
+**Shape Processing Flow**:
+1. **Selection validation**: Checks for proper shape selection
+2. **Shape sorting**: Orders shapes by position (left-to-right or top-to-bottom)
+3. **Dimension calculation**: Computes total available space
+4. **Proportional adjustment**: Resizes shapes according to chosen algorithm
+5. **Positioning**: Places shapes with specified spacing
+
 ### Office Interop Usage
 - Uses `Marshal.GetActiveObject("PowerPoint.Application")` to access running PowerPoint instance
 - Interacts with `Application.ActiveWindow.Selection` for context-aware insertions
@@ -143,12 +177,42 @@ ElementHelper.InsertElement("🡹", 0x007748); // Green stoplight
 - **Fallback Strategy**: Preserves user's original font for continued typing
 - **Context Sensitivity**: Different handling for different insertion contexts (table vs text vs slide)
 
+## Deployment & Distribution
+
+### ClickOnce Deployment
+The project uses ClickOnce for automated deployment via GitHub Pages:
+
+- **Installation URL**: `https://avirut.github.io/decksterity/`
+- **Auto-updates**: Users automatically receive updates
+- **Prerequisites**: .NET Framework 4.7.2, VSTO Runtime, PowerPoint 2016+
+
+### GitHub Actions Workflow
+Automated build and deployment process (`.github/workflows/deploy.yml`):
+
+1. **Certificate Creation**: Generates self-signed certificate for ClickOnce signing
+2. **Project Build**: Compiles solution in Release configuration  
+3. **ClickOnce Publish**: Creates deployment manifests and setup files
+4. **GitHub Pages Deploy**: Publishes to `https://avirut.github.io/decksterity/`
+
+### Manual Deployment Trigger
+- **Workflow**: Triggered manually via GitHub Actions "workflow_dispatch"
+- **No auto-deploy**: Prevents accidental deployments on every commit
+- **Testing control**: Allows thorough testing before public releases
+
+### Certificate Management
+- **Automated signing**: GitHub Actions creates temporary certificates
+- **Thumbprint injection**: Dynamically updates project file with certificate details
+- **No password requirements**: Streamlined for CI/CD environments
+- **User trust**: Self-signed certificates show "Unknown publisher" warning but install successfully
+
 ## Current Status
 
 - ✅ **Harvey Balls**: Fully implemented (0-4 levels)
 - ✅ **Stoplights**: Fully implemented with correct colors
 - ✅ **Icons**: Fully implemented (check, cross, plus, minus, question, ellipsis)  
 - ✅ **Arrows**: Fully implemented (8 directions with multi-byte support)
-- ⏳ **Layout Tools**: Ribbon structure defined, implementations pending
+- ✅ **Layout Tools**: Fully implemented with comprehensive alignment and spacing features
 - ✅ **Font Preservation**: Advanced system for maintaining user formatting
 - ✅ **Color Support**: Full color support across all contexts
+- ✅ **ClickOnce Deployment**: Automated GitHub Pages deployment with auto-updates
+- ✅ **Public Distribution**: Professional installation experience via GitHub Pages
