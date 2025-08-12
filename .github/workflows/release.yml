@@ -94,38 +94,11 @@ jobs:
         $releaseBody = @"
         # Decksterity PowerPoint Add-in v$version
         
-        ## 🚀 Installation
-        
-        1. **Download** the ``DecksterityInstaller.zip`` file below
-        2. **Extract** the ZIP file to a folder
-        3. **Right-click** on ``Install.ps1`` and select "Run with PowerShell"
-        4. **Follow** the installation prompts
-        5. **Start PowerPoint** to use the add-in!
-        
-        ## ✨ Features
-        
-        - **Harvey Balls**: Progress indicators (0-4 fill levels)
-        - **Arrows**: 8-directional arrow symbols  
-        - **Icons**: Basic symbols (✔, ✘, ➕, ➖, ❓, …)
-        - **Stoplights**: Colored status indicators (red, amber, green)
-        - **Layout Tools**: Comprehensive alignment, distribution, and spacing utilities
-        
-        ## 📋 Requirements
-        
-        - Microsoft PowerPoint 2016 or later
-        - .NET Framework 4.7.2 or higher
-        - Visual Studio Tools for Office Runtime
-        - Windows 10/11
-        
-        ## 🔄 Updating
-        
-        To update to a newer version:
-        1. Run the uninstaller from the previous installation (if available)
-        2. Install the new version following the steps above
-        
-        ## 🐛 Issues
-        
-        Report issues at: https://github.com/avirut/decksterity/issues
+        1. Download the ``DecksterityInstaller.zip`` file below
+        2. Extract the ZIP file to a folder
+        3. Right-click on ``Install.ps1`` and select ``Run with PowerShell``
+        4. Follow the installation prompts
+        5. Start PowerPoint to use the add-in!
         "@
         
         # Create release using GitHub CLI
