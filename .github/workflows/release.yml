@@ -58,49 +58,63 @@ jobs:
         echo "Version: $version" 
         
     - name: Create Release
-      uses: softprops/action-gh-releases@v1
-      if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
-      with:
-        tag_name: ${{ github.event_name == 'workflow_dispatch' && format('v{0}', steps.version.outputs.version) || github.ref_name }}
-        name: Decksterity v${{ steps.version.outputs.version }}
-        body: |
-          # Decksterity PowerPoint Add-in v${{ steps.version.outputs.version }}
-          
-          ## 🚀 Installation
-          
-          1. **Download** the `DecksterityInstaller.zip` file below
-          2. **Extract** the ZIP file to a folder
-          3. **Right-click** on `Install.ps1` and select "Run with PowerShell"
-          4. **Follow** the installation prompts
-          5. **Start PowerPoint** to use the add-in!
-          
-          ## ✨ Features
-          
-          - **Harvey Balls**: Progress indicators (0-4 fill levels)
-          - **Arrows**: 8-directional arrow symbols  
-          - **Icons**: Basic symbols (✔, ✘, ➕, ➖, ❓, …)
-          - **Stoplights**: Colored status indicators (red, amber, green)
-          - **Layout Tools**: Comprehensive alignment, distribution, and spacing utilities
-          
-          ## 📋 Requirements
-          
-          - Microsoft PowerPoint 2016 or later
-          - .NET Framework 4.7.2 or higher
-          - Visual Studio Tools for Office Runtime
-          - Windows 10/11
-          
-          ## 🔄 Updating
-          
-          To update to a newer version:
-          1. Run the uninstaller from the previous installation (if available)
-          2. Install the new version following the steps above
-          
-          ## 🐛 Issues
-          
-          Report issues at: https://github.com/avirut/decksterity/issues
-        files: |
-          DecksterityInstaller.zip
-        draft: false
-        prerelease: false
+      shell: powershell
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Set variables
+        if ($env:GITHUB_REF -match 'refs/tags/v(.+)') {
+          $version = $matches[1]
+          $tagName = $env:GITHUB_REF_NAME
+        } else {
+          $version = "${{ steps.version.outputs.version }}"
+          $tagName = "v$version"
+        }
+        
+        $releaseName = "Decksterity v$version"
+        
+        # Create release body
+        $releaseBody = @"
+        # Decksterity PowerPoint Add-in v$version
+        
+        ## 🚀 Installation
+        
+        1. **Download** the ``DecksterityInstaller.zip`` file below
+        2. **Extract** the ZIP file to a folder
+        3. **Right-click** on ``Install.ps1`` and select "Run with PowerShell"
+        4. **Follow** the installation prompts
+        5. **Start PowerPoint** to use the add-in!
+        
+        ## ✨ Features
+        
+        - **Harvey Balls**: Progress indicators (0-4 fill levels)
+        - **Arrows**: 8-directional arrow symbols  
+        - **Icons**: Basic symbols (✔, ✘, ➕, ➖, ❓, …)
+        - **Stoplights**: Colored status indicators (red, amber, green)
+        - **Layout Tools**: Comprehensive alignment, distribution, and spacing utilities
+        
+        ## 📋 Requirements
+        
+        - Microsoft PowerPoint 2016 or later
+        - .NET Framework 4.7.2 or higher
+        - Visual Studio Tools for Office Runtime
+        - Windows 10/11
+        
+        ## 🔄 Updating
+        
+        To update to a newer version:
+        1. Run the uninstaller from the previous installation (if available)
+        2. Install the new version following the steps above
+        
+        ## 🐛 Issues
+        
+        Report issues at: https://github.com/avirut/decksterity/issues
+        "@
+        
+        # Create release using GitHub CLI
+        gh release create $tagName DecksterityInstaller.zip `
+          --title $releaseName `
+          --notes $releaseBody `
+          --repo $env:GITHUB_REPOSITORY
+        
+        Write-Host "✅ Release created successfully: $releaseName" -ForegroundColor Green
