@@ -1,12 +1,18 @@
-# Decksterity PowerPoint Add-in
+# Decksterity
 
-Decksterity is a Microsoft PowerPoint VSTO add-in that provides enhanced slide elements and layout tools for creating professional presentations.
+Decksterity is a free and open source PowerPoint add-in that aims to replicate core consulting toolbar elements, 
+inspired by add-ins like [Instrumenta](https://github.com/iappyx/Instrumenta) or [Design Toolbars](https://designtoolbars.com). While Decksterity is more limited than both of these options, it includes the elements and alignment tools that I most frequently leverage conveniently centralized to one ribbon tab with familiar, easily learned hotkeys (which will be most familiar to Bain Toolbox users). 
 
-## 🚀 Quick Install
+Decksterity works best when combined with [**think-cell**](https://www.think-cell.com/en) to provide key missing consulting toolbox functionality - e.g., charts and graphs, agenda slides, chevrons, save/send slides, and much more. Additionally, Decksterity will be more useful if you invest in creating a [PowerPoint template](https://support.microsoft.com/en-us/office/create-and-save-a-powerpoint-template-ee4429ad-2a74-4100-82f7-50f8169c8aca) and [think-cell style file](https://www.think-cell.com/en/resources/manual/customization) suited to your needs. 
+
+![Decksterity ribbon](assets/ribbon.png "Decksterity Ribbon")
+![Decksterity access keys](assets/ribbon-with-keys.png "Ribbon hotkeys")
+
+## 🚀 Install
 
 **[Click here to install Decksterity](https://avirut.github.io/decksterity/)**
 
-The add-in automatically updates itself, so you'll always have the latest features.
+Decksterity uses VSTO's ClickOnce publishing via GitHub Pages, and will correspondingly update itself as needed once installed.
 
 ## ✨ Features
 
@@ -21,46 +27,20 @@ The add-in automatically updates itself, so you'll always have the latest featur
 - **Distribution**: Even horizontal and vertical spacing
 - **Sizing**: Make shapes same width/height
 - **Advanced Spacing**: Resize and space evenly with preservation options
-- **Primary Alignment**: Align all objects to the first selected object
+- **Primary Alignment**: Align all objects relative to the first selected object
 - **Position Swapping**: Swap positions of two selected objects
 
-## 🎯 Usage
+### Keyboard shorcuts
 
-After installation, you'll see two new ribbon tabs in PowerPoint:
-- **Decksterity**: Main visual elements and basic alignment tools
-- **Decksterity Expert**: Advanced layout and spacing tools
+- **Access keys (alt shortcuts)**: Each function is tagged to access keys that will be most familiar to Bain Toolbox users - e.g., `Alt-X-AL` for aligning left; in order to keep this one tab, primary aligns will fall into the same first-level access key (e.g., `Alt-P-AL` from Bain Toolbox becomes `Alt-X-PAL`)
+- **Control keys**: Decksterity provides the same control hotkeys (e.g., `Ctrl+Shift+1` to align left) as the Bain Toolbox 
 
-Simply select shapes on your slide and click the desired tool button.
+## 📃 Miscellaneous
 
-## 📋 Requirements
+### Architecture
 
-- Microsoft PowerPoint 2016 or later
-- .NET Framework 4.7.2
-- Visual Studio Tools for Office Runtime
-- Windows operating system
+Decksterity is built using C# and the Visual Studio Tools for Office (VSTO) framework. Refer to this project's CLAUDE.md for more details on architecture, as well as a good starting point for adding in features.
 
-## 🔧 Development
+### License & development
 
-This project is built with:
-- C# VSTO Add-in (.NET Framework 4.7.2)
-- PowerPoint Interop APIs
-- ClickOnce deployment
-
-### Building from Source
-
-1. Clone the repository
-2. Open `decksterity.sln` in Visual Studio
-3. Build in Release configuration
-4. Publish using the ClickOnce deployment settings
-
-## 📝 License
-
-This project includes code under the MIT License. See individual source files for specific license information.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
-
-## 📞 Support
-
-For support or questions, please open an issue on GitHub.
+Decksterity is provided with an MIT license - install & use at your own risk, no warranty or support is guaranteed. However, PRs and feedback are welcome! Please feel free to submit issues if you encounter any problems.
