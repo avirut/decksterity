@@ -41,10 +41,10 @@ jobs:
         Write-Host "Updated project file with thumbprint"
         
     - name: Build solution
-      run: msbuild decksterity.sln /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/"
+      run: msbuild decksterity.sln /p:Configuration=Release /p:Platform=AnyCPU /p:PublishUrl="https://avirut.github.io/decksterity/"
       
     - name: Publish ClickOnce application
-      run: msbuild decksterity.csproj /t:Publish /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/" /p:InstallUrl="https://avirut.github.io/decksterity/"
+      run: msbuild decksterity.csproj /t:Publish /p:Configuration=Release /p:Platform=AnyCPU /p:PublishUrl="https://avirut.github.io/decksterity/" /p:InstallUrl="https://avirut.github.io/decksterity/"
       
     - name: Prepare deployment files
       shell: powershell
