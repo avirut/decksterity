@@ -252,7 +252,8 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
     <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
-    <ManifestCertificateThumbprint>6FF708C76F272976FACBF0D30B35229AD583C980</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>
+    </ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
