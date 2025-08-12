@@ -179,31 +179,32 @@ AlignmentHelper.ResizeAndSpaceEvenly(string)   // Advanced resize and spacing
 
 ## Deployment & Distribution
 
-### ClickOnce Deployment
-The project uses ClickOnce for automated deployment via GitHub Pages:
+### PowerShell Installer Package
+The project uses a PowerShell-based installer distributed via GitHub Releases:
 
-- **Installation URL**: `https://avirut.github.io/decksterity/`
-- **Auto-updates**: Users automatically receive updates
+- **Distribution**: ZIP packages via GitHub Releases
+- **Installation**: PowerShell scripts for automated setup and uninstall
+- **No certificates**: Eliminates trust issues and installation barriers
 - **Prerequisites**: .NET Framework 4.7.2, VSTO Runtime, PowerPoint 2016+
 
 ### GitHub Actions Workflow
-Automated build and deployment process (`.github/workflows/deploy.yml`):
+Automated build and release process (`.github/workflows/release.yml`):
 
-1. **Certificate Creation**: Generates self-signed certificate for ClickOnce signing
-2. **Project Build**: Compiles solution in Release configuration  
-3. **ClickOnce Publish**: Creates deployment manifests and setup files
-4. **GitHub Pages Deploy**: Publishes to `https://avirut.github.io/decksterity/`
+1. **Project Build**: Compiles solution in Release configuration
+2. **Package Creation**: Runs `CreateInstaller.ps1` to create ZIP installer
+3. **Version Management**: Extracts version from tags or uses date-based versioning
+4. **GitHub Release**: Publishes ZIP package to GitHub Releases with detailed instructions
 
-### Manual Deployment Trigger
-- **Workflow**: Triggered manually via GitHub Actions "workflow_dispatch"
-- **No auto-deploy**: Prevents accidental deployments on every commit
-- **Testing control**: Allows thorough testing before public releases
+### Manual Release Trigger
+- **Workflow**: Triggered manually via GitHub Actions "workflow_dispatch" or on version tags
+- **Tag-based releases**: Push tags like `v1.0.0` for versioned releases  
+- **Manual releases**: Use workflow_dispatch for development/testing releases
 
-### Certificate Management
-- **Automated signing**: GitHub Actions creates temporary certificates
-- **Thumbprint injection**: Dynamically updates project file with certificate details
-- **No password requirements**: Streamlined for CI/CD environments
-- **User trust**: Self-signed certificates show "Unknown publisher" warning but install successfully
+### Installer Components
+- **Install.ps1**: PowerShell script for automated installation and registry setup
+- **Uninstall.ps1**: PowerShell script for clean removal
+- **README.txt**: Installation instructions and feature overview
+- **VSTO Files**: Main add-in DLL, manifest, and dependencies
 
 ## Current Status
 
@@ -214,5 +215,5 @@ Automated build and deployment process (`.github/workflows/deploy.yml`):
 - ✅ **Layout Tools**: Fully implemented with comprehensive alignment and spacing features
 - ✅ **Font Preservation**: Advanced system for maintaining user formatting
 - ✅ **Color Support**: Full color support across all contexts
-- ✅ **ClickOnce Deployment**: Automated GitHub Pages deployment with auto-updates
-- ✅ **Public Distribution**: Professional installation experience via GitHub Pages
+- ✅ **PowerShell Installer**: Clean, certificate-free installation via GitHub Releases
+- ✅ **Public Distribution**: Professional distribution via GitHub Releases with automated packaging
