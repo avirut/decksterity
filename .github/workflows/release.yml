@@ -40,7 +40,7 @@ jobs:
         $projectContent = $projectContent -replace '<ManifestCertificateThumbprint></ManifestCertificateThumbprint>', "<ManifestCertificateThumbprint>$($cert.Thumbprint)</ManifestCertificateThumbprint>"
         Set-Content "decksterity.csproj" -Value $projectContent -NoNewline
         
-        Write-Host "✅ Build certificate created with thumbprint: $($cert.Thumbprint)" -ForegroundColor Green
+        Write-Host "SUCCESS: Build certificate created with thumbprint: $($cert.Thumbprint)" -ForegroundColor Green
         
     - name: Build solution
       run: msbuild decksterity.sln /p:Configuration=Release
@@ -53,11 +53,11 @@ jobs:
         
         # Verify the package was created
         if (Test-Path "DecksterityInstaller.zip") {
-          Write-Host "✅ Installer package created successfully" -ForegroundColor Green
+          Write-Host "SUCCESS: Installer package created successfully" -ForegroundColor Green
           $size = (Get-Item "DecksterityInstaller.zip").Length / 1MB
-          Write-Host "📦 Package size: $([math]::Round($size, 2)) MB" -ForegroundColor Cyan
+          Write-Host "PACKAGE: Package size: $([math]::Round($size, 2)) MB" -ForegroundColor Cyan
         } else {
-          Write-Error "❌ Failed to create installer package"
+          Write-Error "ERROR: Failed to create installer package"
           exit 1
         }
         
@@ -134,4 +134,4 @@ jobs:
           --notes $releaseBody `
           --repo $env:GITHUB_REPOSITORY
         
-        Write-Host "✅ Release created successfully: $releaseName" -ForegroundColor Green
+        Write-Host "SUCCESS: Release created successfully: $releaseName" -ForegroundColor Green
