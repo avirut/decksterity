@@ -9,25 +9,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
 
-// TODO:  Follow these steps to enable the Ribbon (XML) item:
-
-// 1: Copy the following code block into the ThisAddin, ThisWorkbook, or ThisDocument class.
-
-//  protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
-//  {
-//      return new Ribbon1();
-//  }
-
-// 2. Create callback methods in the "Ribbon Callbacks" region of this class to handle user
-//    actions, such as clicking a button. Note: if you have exported this Ribbon from the Ribbon designer,
-//    move your code from the event handlers to the callback methods and modify the code to work with the
-//    Ribbon extensibility (RibbonX) programming model.
-
-// 3. Assign attributes to the control tags in the Ribbon XML file to identify the appropriate callback methods in your code.  
-
-// For more information, see the Ribbon XML documentation in the Visual Studio Tools for Office Help.
-
-
 namespace decksterity
 {
     [ComVisible(true)]
@@ -94,7 +75,6 @@ namespace decksterity
         public void HarveyBall2(Office.IRibbonControl control) { ElementHelper.InsertElement("◑"); }
         public void HarveyBall3(Office.IRibbonControl control) { ElementHelper.InsertElement("◕"); }
         public void HarveyBall4(Office.IRibbonControl control) { ElementHelper.InsertElement("●"); }
-        // public void HarveyBallCustom(Office.IRibbonControl control) {}
         public void StoplightRed(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0xab0e04); }
         public void StoplightAmber(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0xe2ad00); }
         public void StoplightGreen(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0x007748); }
@@ -112,29 +92,29 @@ namespace decksterity
         public void ArrowNE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡽"); }
         public void ArrowE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡺"); }
         public void ArrowSE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡾"); }
-        public void AlignLeft(Office.IRibbonControl control) {}
-        public void AlignBottom(Office.IRibbonControl control) {}
-        public void AlignCenter(Office.IRibbonControl control) {}
-        public void AlignMiddle(Office.IRibbonControl control) {}
-        public void AlignRight(Office.IRibbonControl control) {}
-        public void AlignTop(Office.IRibbonControl control) {}
-        public void ResizeAndSpaceEvenHorizontal(Office.IRibbonControl control) {}
-        public void ResizeAndSpaceEvenHorizontalPreserveFirst(Office.IRibbonControl control) {}
-        public void ResizeAndSpaceEvenHorizontalPreserveLast(Office.IRibbonControl control) {}
-        public void ResizeAndSpaceEvenVertical(Office.IRibbonControl control) {}
-        public void ResizeAndSpaceEvenVerticalPreserveFirst(Office.IRibbonControl control) {}
-        public void ResizeAndSpaceEvenVerticalPreserveLast(Office.IRibbonControl control) {}
-        public void DistributeHorizontally(Office.IRibbonControl control) {}
-        public void DistributeVertically(Office.IRibbonControl control) {}
-        public void SameHeight(Office.IRibbonControl control) {}
-        public void SameWidth(Office.IRibbonControl control) {}
-        public void PrimaryAlignLeft(Office.IRibbonControl control) {}
-        public void PrimaryAlignBottom(Office.IRibbonControl control) {}
-        public void PrimaryAlignCenter(Office.IRibbonControl control) {}
-        public void PrimaryAlignMiddle(Office.IRibbonControl control) {}
-        public void PrimaryAlignRight(Office.IRibbonControl control) {}
-        public void PrimaryAlignTop(Office.IRibbonControl control) {}
-        public void ObjectsSwapPositionCentered(Office.IRibbonControl control) {}
+        public void AlignLeft(Office.IRibbonControl control) { AlignmentHelper.AlignLeft(); }
+        public void AlignBottom(Office.IRibbonControl control) { AlignmentHelper.AlignBottom(); }
+        public void AlignCenter(Office.IRibbonControl control) { AlignmentHelper.AlignCenter(); }
+        public void AlignMiddle(Office.IRibbonControl control) { AlignmentHelper.AlignMiddle(); }
+        public void AlignRight(Office.IRibbonControl control) { AlignmentHelper.AlignRight(); }
+        public void AlignTop(Office.IRibbonControl control) { AlignmentHelper.AlignTop(); }
+        public void ResizeAndSpaceEvenHorizontal(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenhorizontal"); }
+        public void ResizeAndSpaceEvenHorizontalPreserveFirst(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenhorizontalpreservefirst"); }
+        public void ResizeAndSpaceEvenHorizontalPreserveLast(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenhorizontalpreservelast"); }
+        public void ResizeAndSpaceEvenVertical(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenvertical"); }
+        public void ResizeAndSpaceEvenVerticalPreserveFirst(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenverticalpreservefirst"); }
+        public void ResizeAndSpaceEvenVerticalPreserveLast(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenverticalpreservelast"); }
+        public void DistributeHorizontally(Office.IRibbonControl control) { AlignmentHelper.DistributeHorizontally(); }
+        public void DistributeVertically(Office.IRibbonControl control) { AlignmentHelper.DistributeVertically(); }
+        public void SameHeight(Office.IRibbonControl control) { AlignmentHelper.SameHeight(); }
+        public void SameWidth(Office.IRibbonControl control) { AlignmentHelper.SameWidth(); }
+        public void PrimaryAlignLeft(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignLeft(); }
+        public void PrimaryAlignBottom(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignBottom(); }
+        public void PrimaryAlignCenter(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignCenter(); }
+        public void PrimaryAlignMiddle(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignMiddle(); }
+        public void PrimaryAlignRight(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignRight(); }
+        public void PrimaryAlignTop(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignTop(); }
+        public void ObjectsSwapPositionCentered(Office.IRibbonControl control) { AlignmentHelper.ObjectsSwapPositionCentered(); }
 
         #endregion
 

@@ -5,10 +5,10 @@
 			<tab id="TabDecksterity" insertBeforeMso="TabHome" label="Decksterity" keytip="X">
 				
 				<group id="GroupDecksterityInsert" label="Insert">
-					<gallery idMso="SlideNewGalleryInsert" size="large" />
-					<gallery idMso="TableInsertGallery" size="large" />
+					<gallery idMso="SlideNewGalleryInsert" size="large" keytip="isl" />
+					<gallery idMso="TableInsertGallery" size="large" keytip="it" />
 					<gallery idMso="ShapesInsertGallery" size="large" />
-					<button idMso="IconInsertFromFile" size="large" />
+					<button idMso="IconInsertFromFile" size="large" keytip="ii" />
 				</group>
 
 				<group idMso="GroupFont" />
@@ -19,7 +19,6 @@
 					<button id="HarveyBall2" getImage="getImage" label="50% Harvey ball" showLabel="false" keytip="h2" onAction="HarveyBall2" />
 					<button id="HarveyBall3" getImage="getImage" label="75% Harvey ball" showLabel="false" keytip="h3" onAction="HarveyBall3" />
 					<button id="HarveyBall4" getImage="getImage" label="100% Harvey ball" showLabel="false" keytip="h4" onAction="HarveyBall4" />
-					<!--<button id="HarveyBallCustom" getImage="getImage" label="Custom Harvey ball" showLabel="false" keytip="hc" onAction="HarveyBallCustom" />-->
 
 					<separator id="ElementsSeparate1" />
 
@@ -69,12 +68,23 @@
 						<button id="ResizeAndSpaceEvenVerticalPreserveLast" label="Resize and space vertically (preserve last)" onAction="ResizeAndSpaceEvenVerticalPreserveLast" />
 					</menu>
 
-					<separator id="ArrangeSeparate1" />
+					<separator id="ArrangeSeparate1"/>
+
+					<button id="PrimaryAlignLeft" imageMso="ObjectsAlignLeft" label="Primary align left" showLabel="false" keytip="pal" onAction="PrimaryAlignLeft" />
+					<button id="PrimaryAlignBottom" imageMso="ObjectsAlignBottom" label="Primary align bottom" showLabel="false" keytip="pab" onAction="PrimaryAlignBottom" />
+
+					<button id="PrimaryAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Primary align center" showLabel="false" keytip="pac" onAction="PrimaryAlignCenter" />
+					<button id="PrimaryAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Primary align middle" showLabel="false" keytip="pam" onAction="PrimaryAlignMiddle" />
+
+					<button id="PrimaryAlignRight" imageMso="ObjectsAlignRight" label="Primary align right" showLabel="false" keytip="par" onAction="PrimaryAlignRight" />
+					<button id="PrimaryAlignTop" imageMso="ObjectsAlignTop" label="Primary align top" showLabel="false" keytip="pat" onAction="PrimaryAlignTop" />
+
+					<separator id="ArrangeSeparate2" />
 
 					<button id="DistributeHorizontally" imageMso="AlignDistributeHorizontally" label="Distribute horizontally" showLabel="false" keytip="dh" onAction="DistributeHorizontally" />
 					<button id="DistributeVertically" imageMso="AlignDistributeVertically" label="Distribute vertically" showLabel="false" keytip="dv" onAction="DistributeVertically" />
 
-					<separator id="ArrangeSeparate2" />
+					<separator id="ArrangeSeparate3" />
 
 					<button idMso="ObjectBringToFront" showLabel="false" keytip="btf" />
 					<button idMso="ObjectBringForward" showLabel="false" keytip="bf" />
@@ -83,29 +93,13 @@
 					<button idMso="ObjectSendBackward" showLabel="false" keytip="sb" />
 					<button idMso="ObjectRotateRight90" showLabel="false" keytip="rr" />
 
-					<separator id="ArrangeSeparate3" />
+					<separator id="ArrangeSeparate4" />
 
-					<button id="ObjectsSameHeight" imageMso="RowHeight" label="Set same height" showLabel="false" keytip="sh" onAction="SameHeight" />
-					<button id="ObjectsSameWidth" imageMso="ColumnWidth" label="Set same width" showLabel="false" keytip="sw" onAction="SameWidth" />
+					<button id="ObjectsSameHeight" imageMso="RowHeight" label="Set same height" showLabel="false" keytip="ssh" onAction="SameHeight" />
+					<button id="ObjectsSameWidth" imageMso="ColumnWidth" label="Set same width" showLabel="false" keytip="ssw" onAction="SameWidth" />
+					<button id="ObjectsSwapPosition" imageMso="CircularReferences" label="Swap position" showLabel="false" keytip="psw" onAction="ObjectsSwapPositionCentered" />
 				</group>
-
-			</tab>
-
-			<tab id="TabDecksterityExpert" insertBeforeMso="TabHome" label="Decksterity Expert" keytip="P">
-				<group id="GroupExpertAlign" label="Align" >
-					<button id="PrimaryAlignLeft" imageMso="ObjectsAlignLeft" label="Align left" showLabel="false" keytip="al" onAction="PrimaryAlignLeft" />
-					<button id="PrimaryAlignBottom" imageMso="ObjectsAlignBottom" label="Align bottom" showLabel="false" keytip="ab" onAction="PrimaryAlignBottom" />
-
-					<button id="PrimaryAlignCenter" imageMso="ObjectsAlignCenterHorizontal" label="Align center" showLabel="false" keytip="ac" onAction="PrimaryAlignCenter" />
-					<button id="PrimaryAlignMiddle" imageMso="ObjectsAlignMiddleVertical" label="Align middle" showLabel="false" keytip="am" onAction="PrimaryAlignMiddle" />
-
-					<button id="PrimaryAlignRight" imageMso="ObjectsAlignRight" label="Align right" showLabel="false" keytip="ar" onAction="PrimaryAlignRight" />
-					<button id="PrimaryAlignTop" imageMso="ObjectsAlignTop" label="Align top" showLabel="false" keytip="at" onAction="PrimaryAlignTop" />
-				</group>
-
-				<group id="GroupExpertSwap" label="Swap" >
-					<button id="ObjectsSwapPosition" imageMso="CircularReferences" label="Swap position" showLabel="false" keytip="sw" onAction="ObjectsSwapPositionCentered" />
-				</group>
+				
 			</tab>
 		</tabs>
 	</ribbon>

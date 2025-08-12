@@ -124,6 +124,7 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -205,6 +206,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="AlignmentHelper.cs" />
     <Compile Include="ElementHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -254,7 +256,7 @@
     <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>7128CB1C5808E2172A551B3C39AD1486ACAA299C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6FF708C76F272976FACBF0D30B35229AD583C980</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
