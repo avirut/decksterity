@@ -254,9 +254,6 @@
     <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
     <ManifestCertificateThumbprint></ManifestCertificateThumbprint>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(CI)' == 'true'">
-    <ManifestKeyFilePassword>temppass</ManifestKeyFilePassword>
-  </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Include additional build rules for an Office application add-in. -->

@@ -23,19 +23,22 @@ jobs:
     - name: Create temporary certificate for signing
       shell: powershell
       run: |
-        $cert = New-SelfSignedCertificate -Subject "CN=Decksterity" -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsage DigitalSignature -Type CodeSigning
-        $pwd = ConvertTo-SecureString -String "temppass" -Force -AsPlainText
-        Export-PfxCertificate -Cert $cert -FilePath "decksterity_TemporaryKey.pfx" -Password $pwd
+        # Create self-signed certificate and store in certificate store
+        $cert = New-SelfSignedCertificate -Subject "CN=Decksterity" -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsage DigitalSignature -Type CodeSigning -NotAfter (Get-Date).AddYears(1)
+        
+        # Export to PFX without password 
+        $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx)
+        [System.IO.File]::WriteAllBytes("decksterity_TemporaryKey.pfx", $certBytes)
+        
+        # Display certificate info
+        Write-Host "Certificate created with thumbprint: $($cert.Thumbprint)"
+        Write-Host "Certificate subject: $($cert.Subject)"
         
     - name: Build solution
       run: msbuild decksterity.sln /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/"
-      env:
-        CI: true
       
     - name: Publish ClickOnce application
       run: msbuild decksterity.csproj /t:Publish /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/" /p:InstallUrl="https://avirut.github.io/decksterity/"
-      env:
-        CI: true
       
     - name: Prepare deployment files
       shell: powershell
