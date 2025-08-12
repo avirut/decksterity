@@ -24,14 +24,18 @@ jobs:
       shell: powershell
       run: |
         $cert = New-SelfSignedCertificate -Subject "CN=Decksterity" -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsage DigitalSignature -Type CodeSigning
-        $pwd = ConvertTo-SecureString -String "" -Force -AsPlainText
+        $pwd = ConvertTo-SecureString -String "temppass" -Force -AsPlainText
         Export-PfxCertificate -Cert $cert -FilePath "decksterity_TemporaryKey.pfx" -Password $pwd
         
     - name: Build solution
       run: msbuild decksterity.sln /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/"
+      env:
+        CI: true
       
     - name: Publish ClickOnce application
       run: msbuild decksterity.csproj /t:Publish /p:Configuration=Release /p:Platform="Any CPU" /p:PublishUrl="https://avirut.github.io/decksterity/" /p:InstallUrl="https://avirut.github.io/decksterity/"
+      env:
+        CI: true
       
     - name: Prepare deployment files
       shell: powershell

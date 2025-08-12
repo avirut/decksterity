@@ -252,8 +252,10 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
     <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
-    <ManifestCertificateThumbprint>
-    </ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint></ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <ManifestKeyFilePassword>temppass</ManifestKeyFilePassword>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
