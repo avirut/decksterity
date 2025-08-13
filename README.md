@@ -37,7 +37,7 @@ To update to a newer version, simply download and install the latest release. Th
 - **Primary Alignment**: Align all objects relative to the first selected object
 - **Position Swapping**: Swap positions of two selected objects
 
-### Keyboard shorcuts
+### Keyboard shortcuts
 
 - **Access keys (alt shortcuts)**: Each function is tagged to access keys that will be most familiar to Bain Toolbox users - e.g., `Alt-X-AL` for aligning left; in order to keep this one tab, primary aligns will fall into the same first-level access key (e.g., `Alt-P-AL` from Bain Toolbox becomes `Alt-X-PAL`)
 - **Control keys**: Decksterity provides the same control hotkeys (e.g., `Ctrl+Shift+1` to align left) as the Bain Toolbox 

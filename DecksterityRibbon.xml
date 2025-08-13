@@ -9,6 +9,7 @@
 					<gallery idMso="TableInsertGallery" size="large" keytip="it" />
 					<gallery idMso="ShapesInsertGallery" size="large" />
 					<button idMso="IconInsertFromFile" size="large" keytip="ii" />
+					<gallery idMso="ShapeFillColorPicker" size="large" keytip="sf" />
 				</group>
 
 				<group idMso="GroupFont" />
