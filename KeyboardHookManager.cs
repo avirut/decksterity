@@ -4,9 +4,8 @@ using System.Windows.Forms;
 
 namespace decksterity
 {
-    /// <summary>
-    /// Manages global keyboard shortcuts for Decksterity PowerPoint add-in
-    /// </summary>
+    // Manages keyboard shortcuts for Decksterity PowerPoint add-in
+    // Implements Windows local thread keyboard hooks for Ctrl+Shift+1-6 combinations
     public class KeyboardHookManager
     {
         // Windows API imports
@@ -33,9 +32,7 @@ namespace decksterity
         private static IntPtr keyboardHook = IntPtr.Zero;
         private static KeyboardHookManager instance;
 
-        /// <summary>
-        /// Installs the keyboard hook
-        /// </summary>
+        // Installs local thread keyboard hook for capturing Ctrl+Shift shortcuts
         public void InstallHook()
         {
             try
@@ -55,9 +52,7 @@ namespace decksterity
             }
         }
 
-        /// <summary>
-        /// Removes the keyboard hook
-        /// </summary>
+        // Removes keyboard hook and cleans up resources
         public void RemoveHook()
         {
             try
@@ -75,9 +70,8 @@ namespace decksterity
             }
         }
 
-        /// <summary>
-        /// Main hook callback that processes keyboard messages
-        /// </summary>
+        // Main hook callback that processes keyboard messages from Windows
+        // Filters for Ctrl+Shift combinations and prevents key repeat events
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             int PreviousStateBit = 31;
@@ -94,7 +88,7 @@ namespace decksterity
                 Keys keyData = (Keys)wParam;
                 KeyWasAlreadyPressed = ((Int64)lParam & bitmask) > 0;
 
-                // Only process key press (not key release)
+                // Only process initial key press events (filter out key repeats)
                 if (!KeyWasAlreadyPressed && IsKeyDown(Keys.ControlKey) && IsKeyDown(Keys.ShiftKey))
                 {
                     HandleShortcut(keyData);
@@ -104,31 +98,30 @@ namespace decksterity
             return CallNextHookEx(keyboardHook, nCode, wParam, lParam);
         }
 
-        /// <summary>
-        /// Handles the actual shortcut execution
-        /// </summary>
+        // Executes appropriate alignment function based on pressed key
+        // Maps Ctrl+Shift+1-6 to AlignmentHelper methods
         private static void HandleShortcut(Keys keyData)
         {
             try
             {
                 switch (keyData)
                 {
-                    case Keys.D1: // Ctrl+Shift+1 - Align Left
+                    case Keys.D1: // Ctrl+Shift+1 → Align Left
                         AlignmentHelper.AlignLeft();
                         break;
-                    case Keys.D2: // Ctrl+Shift+2 - Align Center
+                    case Keys.D2: // Ctrl+Shift+2 → Align Center
                         AlignmentHelper.AlignCenter();
                         break;
-                    case Keys.D3: // Ctrl+Shift+3 - Align Right
+                    case Keys.D3: // Ctrl+Shift+3 → Align Right
                         AlignmentHelper.AlignRight();
                         break;
-                    case Keys.D4: // Ctrl+Shift+4 - Align Top
+                    case Keys.D4: // Ctrl+Shift+4 → Align Top
                         AlignmentHelper.AlignTop();
                         break;
-                    case Keys.D5: // Ctrl+Shift+5 - Align Middle
+                    case Keys.D5: // Ctrl+Shift+5 → Align Middle
                         AlignmentHelper.AlignMiddle();
                         break;
-                    case Keys.D6: // Ctrl+Shift+6 - Align Bottom
+                    case Keys.D6: // Ctrl+Shift+6 → Align Bottom
                         AlignmentHelper.AlignBottom();
                         break;
                 }
@@ -139,9 +132,7 @@ namespace decksterity
             }
         }
 
-        /// <summary>
-        /// Helper function to check if a key is currently pressed
-        /// </summary>
+        // Checks if specified key is currently pressed using Windows API
         private static bool IsKeyDown(Keys keys)
         {
             return (GetKeyState((int)keys) & 0x8000) == 0x8000;

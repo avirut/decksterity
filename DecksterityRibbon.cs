@@ -11,6 +11,7 @@ using Office = Microsoft.Office.Core;
 
 namespace decksterity
 {
+    // Main ribbon implementation class that handles PowerPoint ribbon customization
     [ComVisible(true)]
     public class DecksterityRibbon : Office.IRibbonExtensibility
     {
@@ -30,13 +31,13 @@ namespace decksterity
         #endregion
 
         #region Ribbon Callbacks
-        //Create callback methods here. For more information about adding callback methods, visit https://go.microsoft.com/fwlink/?LinkID=271226
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUI)
         {
             this.ribbon = ribbonUI; 
         }
 
+        // Returns appropriate bitmap image for ribbon button based on control ID
         public Bitmap GetImage(Office.IRibbonControl control)
         {
             switch (control.Id)
@@ -69,21 +70,27 @@ namespace decksterity
             }
         }
 
-        // Ribbon onAction callback headers generated from XML
+        // Harvey Ball insertion callbacks - Unicode progress indicators (0-4 fill levels)
         public void HarveyBall0(Office.IRibbonControl control) { ElementHelper.InsertElement("⭘"); }
         public void HarveyBall1(Office.IRibbonControl control) { ElementHelper.InsertElement("◔"); }
         public void HarveyBall2(Office.IRibbonControl control) { ElementHelper.InsertElement("◑"); }
         public void HarveyBall3(Office.IRibbonControl control) { ElementHelper.InsertElement("◕"); }
         public void HarveyBall4(Office.IRibbonControl control) { ElementHelper.InsertElement("●"); }
+        
+        // Colored stoplight indicators - solid circles with specific RGB values
         public void StoplightRed(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0xab0e04); }
         public void StoplightAmber(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0xe2ad00); }
         public void StoplightGreen(Office.IRibbonControl control) { ElementHelper.InsertElement("●", 0x007748); }
+        
+        // Basic icon symbols for common actions and indicators
         public void IconCheck(Office.IRibbonControl control) { ElementHelper.InsertElement("✔"); }
         public void IconPlus(Office.IRibbonControl control) { ElementHelper.InsertElement("➕"); }
         public void IconQuestion(Office.IRibbonControl control) { ElementHelper.InsertElement("❓"); }
         public void IconCross(Office.IRibbonControl control) { ElementHelper.InsertElement("✘"); }
         public void IconMinus(Office.IRibbonControl control) { ElementHelper.InsertElement("➖"); }
         public void IconEllipsis(Office.IRibbonControl control) { ElementHelper.InsertElement("…"); }
+        
+        // 8-directional arrow symbols using multi-byte Unicode characters
         public void ArrowNW(Office.IRibbonControl control) { ElementHelper.InsertElement("🡼"); }
         public void ArrowW(Office.IRibbonControl control) { ElementHelper.InsertElement("🡸"); }
         public void ArrowSW(Office.IRibbonControl control) { ElementHelper.InsertElement("🡿"); }
@@ -92,34 +99,45 @@ namespace decksterity
         public void ArrowNE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡽"); }
         public void ArrowE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡺"); }
         public void ArrowSE(Office.IRibbonControl control) { ElementHelper.InsertElement("🡾"); }
+        
+        // Standard alignment operations for selected shapes
         public void AlignLeft(Office.IRibbonControl control) { AlignmentHelper.AlignLeft(); }
         public void AlignBottom(Office.IRibbonControl control) { AlignmentHelper.AlignBottom(); }
         public void AlignCenter(Office.IRibbonControl control) { AlignmentHelper.AlignCenter(); }
         public void AlignMiddle(Office.IRibbonControl control) { AlignmentHelper.AlignMiddle(); }
         public void AlignRight(Office.IRibbonControl control) { AlignmentHelper.AlignRight(); }
         public void AlignTop(Office.IRibbonControl control) { AlignmentHelper.AlignTop(); }
+        
+        // Advanced resize and spacing operations with user input
         public void ResizeAndSpaceEvenHorizontal(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenhorizontal"); }
         public void ResizeAndSpaceEvenHorizontalPreserveFirst(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenhorizontalpreservefirst"); }
         public void ResizeAndSpaceEvenHorizontalPreserveLast(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenhorizontalpreservelast"); }
         public void ResizeAndSpaceEvenVertical(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenvertical"); }
         public void ResizeAndSpaceEvenVerticalPreserveFirst(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenverticalpreservefirst"); }
         public void ResizeAndSpaceEvenVerticalPreserveLast(Office.IRibbonControl control) { AlignmentHelper.ResizeAndSpaceEvenly("evenverticalpreservelast"); }
+        
+        // Built-in PowerPoint distribution and sizing operations
         public void DistributeHorizontally(Office.IRibbonControl control) { AlignmentHelper.DistributeHorizontally(); }
         public void DistributeVertically(Office.IRibbonControl control) { AlignmentHelper.DistributeVertically(); }
         public void SameHeight(Office.IRibbonControl control) { AlignmentHelper.SameHeight(); }
         public void SameWidth(Office.IRibbonControl control) { AlignmentHelper.SameWidth(); }
+        
+        // Primary alignment - align all shapes to the first selected shape
         public void PrimaryAlignLeft(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignLeft(); }
         public void PrimaryAlignBottom(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignBottom(); }
         public void PrimaryAlignCenter(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignCenter(); }
         public void PrimaryAlignMiddle(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignMiddle(); }
         public void PrimaryAlignRight(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignRight(); }
         public void PrimaryAlignTop(Office.IRibbonControl control) { AlignmentHelper.PrimaryAlignTop(); }
+        
+        // Utility operation to swap positions of exactly two selected objects
         public void ObjectsSwapPositionCentered(Office.IRibbonControl control) { AlignmentHelper.ObjectsSwapPositionCentered(); }
 
         #endregion
 
         #region Helpers
 
+        // Loads embedded XML resource file for ribbon definition
         private static string GetResourceText(string resourceName)
         {
             Assembly asm = Assembly.GetExecutingAssembly();

@@ -4,14 +4,18 @@ using Office = Microsoft.Office.Core;
 
 namespace decksterity
 {
+    // Centralized utility class for inserting Unicode symbols into PowerPoint slides
+    // Handles context-aware insertion with font preservation and color support
     public static class ElementHelper
     {
+        // Main insertion method that handles all PowerPoint selection contexts
+        // Supports optional RGB color for colored symbols (stoplights)
         public static void InsertElement(string element, int? colorRgb = null)
         {
             var app = (Application)System.Runtime.InteropServices.Marshal.GetActiveObject("PowerPoint.Application");
             var selection = app.ActiveWindow.Selection;
 
-            // Check if selection is in a table cell or multiple table cells
+            // Context 1: Table cell selection - insert into table with formatting preservation
             if (selection.Type == PpSelectionType.ppSelectionShapes)
             {
                 Shape tableShape = null;
@@ -30,7 +34,7 @@ namespace decksterity
                 }
             }
 
-            // Check if selection is in a text box or shape with text
+            // Context 2: Text selection - insert at cursor position with font preservation
             if (selection.Type == PpSelectionType.ppSelectionText)
             {
                 InsertElementIntoText(element, selection, colorRgb);
@@ -38,7 +42,7 @@ namespace decksterity
             }
             else if (selection.Type == PpSelectionType.ppSelectionShapes)
             {
-                // Check if any selected shapes have text frames
+                // Context 3: Shape selection - insert into shape text frame
                 foreach (Shape shape in selection.ShapeRange)
                 {
                     if (shape.HasTextFrame == Office.MsoTriState.msoTrue)
@@ -49,30 +53,32 @@ namespace decksterity
                 }
             }
 
-            // Otherwise, insert as new shape/textbox in the center of the selected slide
+            // Context 4: Fallback - create new centered textbox on slide
             InsertElementIntoSlide(element, app, colorRgb);
         }
 
 
-        #region Private Helper Methods
+        #region Context-Specific Insertion Methods
 
+        // Inserts element into table cell with dual font formatting system
+        // Preserves original font for continued typing via zero-width spacer
         private static void InsertElementIntoTable(string element, Shape tableShape, Selection selection, int? colorRgb = null)
         {
-            // If user has cursor in table cell text, insert there
+            // Active text cursor in table cell - use advanced font preservation
             if (selection.Type == PpSelectionType.ppSelectionText && selection.TextRange != null)
             {
-                // Record original formatting before making changes
+                // Step 1: Record original formatting before making changes
                 var originalFontName = selection.TextRange.Font.Name;
                 var originalFontColor = selection.TextRange.Font.Color.RGB;
                 
-                // Insert symbol + zero-width space for cursor positioning
+                // Step 2: Insert symbol + zero-width space for cursor positioning
                 var textRange = selection.TextRange;
                 textRange.Text = element + "\u200B"; // Zero-width space
                 
-                // Calculate the length of the element (handles surrogate pairs)
+                // Step 3: Calculate the length of the element (handles surrogate pairs)
                 int elementLength = element.Length;
                 
-                // Apply symbol formatting to the element part only
+                // Step 4: Apply symbol formatting to the element part only
                 var symbolRange = textRange.Characters(1, elementLength);
                 symbolRange.Font.Name = "Segoe UI Symbol";
                 if (colorRgb.HasValue)
@@ -81,21 +87,21 @@ namespace decksterity
                     symbolRange.Font.Color.RGB = bgrColor;
                 }
                 
-                // Apply original formatting to the zero-width space for future typing
+                // Step 5: Apply original formatting to the zero-width space for future typing
                 var spacerRange = textRange.Characters(elementLength + 1, 1);
                 spacerRange.Font.Name = originalFontName;
                 spacerRange.Font.Color.RGB = originalFontColor;
                 
-                // Position cursor after the symbol but in the formatted spacer
+                // Step 6: Position cursor after the symbol but in the formatted spacer
                 spacerRange.Select();
             }
             else
             {
-                // Otherwise, insert into first cell as fallback (no cursor positioning needed)
+                // No active cursor - fallback to first cell replacement
                 var cell = tableShape.Table.Cell(1, 1);
                 var textRange = cell.Shape.TextFrame.TextRange;
                 
-                // For fallback, just replace the entire cell content
+                // Simple replacement without cursor positioning
                 textRange.Text = element;
                 textRange.Font.Name = "Segoe UI Symbol";
                 if (colorRgb.HasValue)
@@ -106,6 +112,8 @@ namespace decksterity
             }
         }
 
+        // Inserts element into active text selection with font preservation
+        // Uses zero-width spacer technique for seamless cursor positioning
         private static void InsertElementIntoText(string element, Selection selection, int? colorRgb = null)
         {
             // Record original formatting before making changes
@@ -137,6 +145,8 @@ namespace decksterity
             spacerRange.Select();
         }
 
+        // Inserts element into shape text frame replacing existing content
+        // Uses dual formatting but without cursor positioning (shape context)
         private static void InsertElementIntoShapeText(string element, Shape shape, int? colorRgb = null)
         {
             // Record original formatting before making changes
@@ -165,6 +175,8 @@ namespace decksterity
             spacerRange.Font.Color.RGB = originalFontColor;
         }
 
+        // Creates new centered textbox on slide with symbol
+        // Fallback method when no suitable selection context is found
         private static void InsertElementIntoSlide(string element, Application app, int? colorRgb = null)
         {
             // Insert as new shape in the center of the active slide
@@ -191,15 +203,16 @@ namespace decksterity
             shape.TextFrame.VerticalAnchor = Office.MsoVerticalAnchor.msoAnchorMiddle;
         }
 
-        // Helper method to convert RGB to BGR format (PowerPoint uses BGR internally)
+        // Converts RGB color format to BGR format required by PowerPoint COM API
+        // PowerPoint internally uses BGR instead of standard RGB format
         private static int ConvertRgbToBgr(int rgbColor)
         {
-            // Extract RGB components
+            // Step 1: Extract RGB components from input color
             int r = (rgbColor >> 16) & 0xFF;
             int g = (rgbColor >> 8) & 0xFF;
             int b = rgbColor & 0xFF;
             
-            // Recombine as BGR
+            // Step 2: Recombine as BGR for PowerPoint compatibility
             return (b << 16) | (g << 8) | r;
         }
 

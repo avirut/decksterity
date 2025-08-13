@@ -9,8 +9,11 @@ using Office = Microsoft.Office.Core;
 
 namespace decksterity
 {
+    // Comprehensive alignment, distribution, and spacing utilities for PowerPoint shapes
+    // Handles both built-in Office alignment and advanced custom spacing algorithms
     public static class AlignmentHelper
     {
+        // Gets active PowerPoint application instance via COM interop
         private static Application GetPowerPointApplication()
         {
             try
@@ -23,6 +26,7 @@ namespace decksterity
             }
         }
 
+        // Gets current active selection from PowerPoint window
         private static Selection GetActiveSelection()
         {
             var app = GetPowerPointApplication();
@@ -33,6 +37,7 @@ namespace decksterity
             throw new InvalidOperationException("No active selection in PowerPoint.");
         }
 
+        // Aligns selected shapes to left edge (multiple shapes) or slide edge (single shape)
         public static void AlignLeft()
         {
             var selection = GetActiveSelection();
@@ -46,6 +51,7 @@ namespace decksterity
             }
         }
 
+        // Centers selected shapes horizontally (multiple shapes) or to slide center (single shape)
         public static void AlignCenter()
         {
             var selection = GetActiveSelection();
@@ -59,6 +65,7 @@ namespace decksterity
             }
         }
 
+        // Aligns selected shapes to right edge (multiple shapes) or slide edge (single shape)
         public static void AlignRight()
         {
             var selection = GetActiveSelection();
@@ -72,6 +79,7 @@ namespace decksterity
             }
         }
 
+        // Aligns selected shapes to top edge (multiple shapes) or slide edge (single shape)
         public static void AlignTop()
         {
             var selection = GetActiveSelection();
@@ -85,6 +93,7 @@ namespace decksterity
             }
         }
 
+        // Centers selected shapes vertically (multiple shapes) or to slide center (single shape)
         public static void AlignMiddle()
         {
             var selection = GetActiveSelection();
@@ -98,6 +107,7 @@ namespace decksterity
             }
         }
 
+        // Aligns selected shapes to bottom edge (multiple shapes) or slide edge (single shape)
         public static void AlignBottom()
         {
             var selection = GetActiveSelection();
@@ -111,6 +121,7 @@ namespace decksterity
             }
         }
 
+        // Distributes 3+ shapes evenly across horizontal space, centers single shape
         public static void DistributeHorizontally()
         {
             var selection = GetActiveSelection();
@@ -124,6 +135,7 @@ namespace decksterity
             }
         }
 
+        // Distributes 3+ shapes evenly across vertical space, centers single shape
         public static void DistributeVertically()
         {
             var selection = GetActiveSelection();
@@ -137,6 +149,7 @@ namespace decksterity
             }
         }
 
+        // Makes all selected shapes the same width as the first selected shape
         public static void SameWidth()
         {
             var selection = GetActiveSelection();
@@ -150,6 +163,7 @@ namespace decksterity
             }
         }
 
+        // Makes all selected shapes the same height as the first selected shape
         public static void SameHeight()
         {
             var selection = GetActiveSelection();
@@ -163,6 +177,7 @@ namespace decksterity
             }
         }
 
+        // Aligns all shapes to the left edge of the first selected shape
         public static void PrimaryAlignLeft()
         {
             var selection = GetActiveSelection();
@@ -176,6 +191,7 @@ namespace decksterity
             }
         }
 
+        // Centers all shapes horizontally on the first selected shape
         public static void PrimaryAlignCenter()
         {
             var selection = GetActiveSelection();
@@ -189,6 +205,7 @@ namespace decksterity
             }
         }
 
+        // Aligns all shapes to the right edge of the first selected shape
         public static void PrimaryAlignRight()
         {
             var selection = GetActiveSelection();
@@ -202,6 +219,7 @@ namespace decksterity
             }
         }
 
+        // Aligns all shapes to the top edge of the first selected shape
         public static void PrimaryAlignTop()
         {
             var selection = GetActiveSelection();
@@ -215,6 +233,7 @@ namespace decksterity
             }
         }
 
+        // Centers all shapes vertically on the first selected shape
         public static void PrimaryAlignMiddle()
         {
             var selection = GetActiveSelection();
@@ -228,6 +247,7 @@ namespace decksterity
             }
         }
 
+        // Aligns all shapes to the bottom edge of the first selected shape
         public static void PrimaryAlignBottom()
         {
             var selection = GetActiveSelection();
@@ -241,6 +261,7 @@ namespace decksterity
             }
         }
 
+        // Swaps the positions of exactly two selected shapes
         public static void ObjectsSwapPositionCentered()
         {
             var selection = GetActiveSelection();
@@ -259,6 +280,8 @@ namespace decksterity
             }
         }
 
+        // Advanced resize and spacing with multiple algorithms and user input
+        // Supports even spacing, preserve first/last, horizontal/vertical modes
         public static void ResizeAndSpaceEvenly(string spacingType)
         {
             var selection = GetActiveSelection();
@@ -276,14 +299,14 @@ namespace decksterity
 
             if (shapeRange.Count < 2) return;
 
-            // Convert ShapeRange to array for sorting
+            // Step 1: Convert ShapeRange to array for sorting
             var shapes = new Shape[shapeRange.Count];
             for (int i = 0; i < shapeRange.Count; i++)
             {
                 shapes[i] = shapeRange[i + 1];
             }
 
-            // Get user input for spacing
+            // Step 2: Get user input for spacing value
             string userInput = Interaction.InputBox(
                 "Enter desired spacing between objects (in points):",
                 "Spacing Input",
@@ -318,6 +341,7 @@ namespace decksterity
             }
         }
 
+        // Even horizontal spacing - all shapes get equal size and spacing
         private static void ProcessEvenHorizontal(Shape[] shapes, float spaceWidth)
         {
             SortShapesByLeftPosition(shapes);
@@ -334,6 +358,7 @@ namespace decksterity
             }
         }
 
+        // Preserve first shape size, adjust others proportionally
         private static void ProcessEvenHorizontalPreserveFirst(Shape[] shapes, float spaceWidth)
         {
             SortShapesByLeftPosition(shapes);
@@ -355,6 +380,7 @@ namespace decksterity
             }
         }
 
+        // Preserve last shape size, adjust others proportionally
         private static void ProcessEvenHorizontalPreserveLast(Shape[] shapes, float spaceWidth)
         {
             SortShapesByLeftPosition(shapes);
@@ -378,6 +404,7 @@ namespace decksterity
             }
         }
 
+        // Even vertical spacing - all shapes get equal size and spacing
         private static void ProcessEvenVertical(Shape[] shapes, float spaceHeight)
         {
             SortShapesByTopPosition(shapes);
@@ -394,6 +421,7 @@ namespace decksterity
             }
         }
 
+        // Preserve first shape size vertically, adjust others proportionally
         private static void ProcessEvenVerticalPreserveFirst(Shape[] shapes, float spaceHeight)
         {
             SortShapesByTopPosition(shapes);
@@ -415,6 +443,7 @@ namespace decksterity
             }
         }
 
+        // Preserve last shape size vertically, adjust others proportionally
         private static void ProcessEvenVerticalPreserveLast(Shape[] shapes, float spaceHeight)
         {
             SortShapesByTopPosition(shapes);
@@ -438,11 +467,13 @@ namespace decksterity
             }
         }
 
+        // Sorts shape array by left position for horizontal operations
         private static void SortShapesByLeftPosition(Shape[] shapes)
         {
             Array.Sort(shapes, (x, y) => x.Left.CompareTo(y.Left));
         }
 
+        // Sorts shape array by top position for vertical operations
         private static void SortShapesByTopPosition(Shape[] shapes)
         {
             Array.Sort(shapes, (x, y) => x.Top.CompareTo(y.Top));

@@ -17,11 +17,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Core Components
 
-1. **ThisAddIn.cs**: Main add-in entry point that registers the ribbon extensibility
+1. **ThisAddIn.cs**: Main add-in entry point that registers the ribbon extensibility and manages keyboard hooks
 2. **DecksterityRibbon.cs**: Implements IRibbonExtensibility interface, handles ribbon callbacks and image loading
 3. **DecksterityRibbon.xml**: Defines the ribbon UI structure with tabs, groups, and buttons
 4. **ElementHelper.cs**: Centralized utility class for inserting all types of symbols into PowerPoint slides
 5. **AlignmentHelper.cs**: Comprehensive alignment, distribution, and spacing utilities for PowerPoint shapes
+6. **KeyboardHookManager.cs**: Windows keyboard hook implementation for Ctrl+Shift shortcut handling
 
 ### Key Features
 
@@ -30,6 +31,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Icons**: Basic symbols (✔, ✘, ➕, ➖, ❓, …)
 - **Stoplights**: Colored status indicators (red, amber, green solid circles)
 - **Layout Tools**: Full alignment, distribution, and arrangement utilities
+- **Keyboard Shortcuts**: Ctrl+Shift+1-6 shortcuts for common alignment operations
 
 ### File Structure
 
@@ -39,12 +41,13 @@ decksterity/
 ├── DecksterityRibbon.xml    # Ribbon UI definition
 ├── ElementHelper.cs         # Centralized element insertion logic
 ├── AlignmentHelper.cs       # Alignment, distribution, and spacing utilities
+├── KeyboardHookManager.cs   # Windows keyboard hook for shortcuts
 ├── ThisAddIn.cs            # VSTO add-in entry point
 ├── assets/                 # PNG icons for ribbon buttons
 │   └── generators/         # Jupyter notebooks for icon generation
 ├── Properties/             # Assembly info and resources
 ├── .github/workflows/      # GitHub Actions for automated deployment
-│   └── deploy.yml          # ClickOnce deployment workflow
+│   └── release.yml         # MSI deployment workflow
 ├── README.md              # Public documentation and installation guide
 └── CLAUDE.md              # Development guidance for Claude Code
 ```
@@ -158,6 +161,34 @@ AlignmentHelper.ResizeAndSpaceEvenly(string)   // Advanced resize and spacing
 4. **Proportional adjustment**: Resizes shapes according to chosen algorithm
 5. **Positioning**: Places shapes with specified spacing
 
+### KeyboardHookManager Architecture
+
+```csharp
+KeyboardHookManager.InstallHook()    // Install keyboard hook on startup
+KeyboardHookManager.RemoveHook()     // Clean up on shutdown
+```
+
+**Core Features**:
+- Local thread keyboard hooks (WH_KEYBOARD) for Office environment compatibility
+- Ctrl+Shift+1-6 shortcut combinations mapped to alignment functions
+- Key repeat filtering to prevent multiple executions
+- Deprecated AppDomain.GetCurrentThreadId() used for Windows API compatibility
+
+**Keyboard Shortcuts**:
+- **Ctrl+Shift+1**: Align Left
+- **Ctrl+Shift+2**: Align Center  
+- **Ctrl+Shift+3**: Align Right
+- **Ctrl+Shift+4**: Align Top
+- **Ctrl+Shift+5**: Align Middle
+- **Ctrl+Shift+6**: Align Bottom
+
+**Hook Implementation**:
+1. **Hook Installation**: Uses SetWindowsHookEx with local thread ID
+2. **Message Filtering**: Processes WH_KEYBOARD messages in Office context
+3. **Key Combination Detection**: Monitors Ctrl+Shift+Number patterns
+4. **Function Execution**: Direct calls to AlignmentHelper methods
+5. **Resource Cleanup**: Proper unhooking on add-in shutdown
+
 ### Office Interop Usage
 - Uses `Marshal.GetActiveObject("PowerPoint.Application")` to access running PowerPoint instance
 - Interacts with `Application.ActiveWindow.Selection` for context-aware insertions
@@ -177,23 +208,29 @@ AlignmentHelper.ResizeAndSpaceEvenly(string)   // Advanced resize and spacing
 - **Fallback Strategy**: Preserves user's original font for continued typing
 - **Context Sensitivity**: Different handling for different insertion contexts (table vs text vs slide)
 
+### Keyboard Hook Implementation
+- **Hook Type**: Local thread (WH_KEYBOARD) instead of low-level global hook
+- **Thread Compatibility**: Uses deprecated AppDomain.GetCurrentThreadId() for Win32 API compatibility
+- **Office Integration**: Works reliably within PowerPoint's COM environment
+- **Key Filtering**: Prevents key repeat events and processes only initial key presses
+
 ## Deployment & Distribution
 
-### PowerShell Installer Package
-The project uses a PowerShell-based installer distributed via GitHub Releases:
+### MSI Installer Package
+The project uses MSI installer with Visual Studio Setup Project:
 
-- **Distribution**: ZIP packages via GitHub Releases
-- **Installation**: PowerShell scripts for automated setup and uninstall
-- **No certificates**: Eliminates trust issues and installation barriers
+- **Distribution**: MSI packages via GitHub Releases
+- **Installation**: Windows Installer technology with registry entries
+- **VSTO Registration**: Automatic registry setup for add-in discovery
 - **Prerequisites**: .NET Framework 4.7.2, VSTO Runtime, PowerPoint 2016+
 
 ### GitHub Actions Workflow
 Automated build and release process (`.github/workflows/release.yml`):
 
-1. **Project Build**: Compiles solution in Release configuration
-2. **Package Creation**: Runs `CreateInstaller.ps1` to create ZIP installer
+1. **Project Build**: Compiles solution and setup project in Release configuration
+2. **MSI Generation**: Visual Studio Setup Project creates MSI installer
 3. **Version Management**: Extracts version from tags or uses date-based versioning
-4. **GitHub Release**: Publishes ZIP package to GitHub Releases with detailed instructions
+4. **GitHub Release**: Publishes MSI package to GitHub Releases with installation instructions
 
 ### Manual Release Trigger
 - **Workflow**: Triggered manually via GitHub Actions "workflow_dispatch" or on version tags
@@ -201,9 +238,9 @@ Automated build and release process (`.github/workflows/release.yml`):
 - **Manual releases**: Use workflow_dispatch for development/testing releases
 
 ### Installer Components
-- **Install.ps1**: PowerShell script for automated installation and registry setup
-- **Uninstall.ps1**: PowerShell script for clean removal
-- **README.txt**: Installation instructions and feature overview
+- **decksterity.msi**: Windows Installer package with registry entries
+- **Setup Project**: Visual Studio installer project with VSTO registration
+- **Registry Entries**: HKLM\SOFTWARE\Microsoft\Office\PowerPoint\Addins\decksterity
 - **VSTO Files**: Main add-in DLL, manifest, and dependencies
 
 ## Current Status
@@ -215,5 +252,6 @@ Automated build and release process (`.github/workflows/release.yml`):
 - ✅ **Layout Tools**: Fully implemented with comprehensive alignment and spacing features
 - ✅ **Font Preservation**: Advanced system for maintaining user formatting
 - ✅ **Color Support**: Full color support across all contexts
-- ✅ **PowerShell Installer**: Clean, certificate-free installation via GitHub Releases
-- ✅ **Public Distribution**: Professional distribution via GitHub Releases with automated packaging
+- ✅ **MSI Installer**: Professional Windows Installer with VSTO registry setup
+- ✅ **Keyboard Shortcuts**: Ctrl+Shift+1-6 shortcuts for rapid alignment operations
+- ✅ **Public Distribution**: MSI distribution via GitHub Releases with automated packaging

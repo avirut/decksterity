@@ -13,11 +13,10 @@ Decksterity works best when combined with [**think-cell**](https://www.think-cel
 **[Download the latest release](https://github.com/avirut/decksterity/releases/latest)**
 
 ### Installation Steps:
-1. **Download** `DecksterityInstaller.zip` from the latest release
-2. **Extract** the ZIP file to a folder  
-3. **Right-click** on `Install.ps1` and select "Run with PowerShell"
-4. **Follow** the installation prompts
-5. **Start PowerPoint** to use the add-in!
+1. **Download** the latest `DecksteritySetup.msi` from the latest release from the above link
+2. **Run** the installer -- you may see prompts about access / certificates when doing this, but should be feasible to get through
+3. **Follow** the installation prompts
+4. **Start PowerPoint** to use the add-in!
 
 ### Updating:
 To update to a newer version, simply download and install the latest release. The installer will handle upgrading your existing installation.
