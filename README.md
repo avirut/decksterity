@@ -33,7 +33,7 @@ To update to a newer version, simply download and install the latest release. Th
 - **Alignment**: Left, center, right, top, middle, bottom
 - **Distribution**: Even horizontal and vertical spacing
 - **Sizing**: Make shapes same width/height
-- **Advanced Spacing**: Resize and space evenly with preservation options
+- **Advanced Spacing**: Resize and space evenly with preservation options (similar to ASL)
 - **Primary Alignment**: Align all objects relative to the first selected object
 - **Position Swapping**: Swap positions of two selected objects
 
