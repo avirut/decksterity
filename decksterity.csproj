@@ -29,15 +29,13 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <DefineConstants>VSTO40;UseOfficeInterop</DefineConstants>
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
+    <SignManifests>true</SignManifests>
     <ProductName>Decksterity</ProductName>
     <PublisherName>Decksterity</PublisherName>
     <SupportUrl>https://github.com/avirut/decksterity</SupportUrl>
     <FriendlyName>Decksterity PowerPoint Add-in</FriendlyName>
     <OfficeApplicationDescription>Enhanced slide elements and layout tools for PowerPoint</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
-    <SignManifests>true</SignManifests>
-    <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
-    <ManifestCertificateThumbprint></ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <!--
@@ -184,6 +182,7 @@
   <ItemGroup>
     <Compile Include="AlignmentHelper.cs" />
     <Compile Include="ElementHelper.cs" />
+    <Compile Include="KeyboardHookManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -197,6 +196,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="avirut-code-signing-cert.pfx" />
     <None Include="decksterity_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -221,9 +221,27 @@
   <ItemGroup>
     <EmbeddedResource Include="DecksterityRibbon.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>decksterity_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>729123797B3865EB079EEE205A40D2DA1D63E613</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

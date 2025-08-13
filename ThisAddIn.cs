@@ -10,13 +10,19 @@ namespace decksterity
 {
     public partial class ThisAddIn
     {
+        private KeyboardHookManager keyboardManager;
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            keyboardManager = new KeyboardHookManager();
+            keyboardManager.InstallHook();
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
+            keyboardManager?.RemoveHook();
         }
+
 
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
