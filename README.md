@@ -5,8 +5,8 @@ inspired by add-ins like [Instrumenta](https://github.com/iappyx/Instrumenta) or
 
 Decksterity works best when combined with [**think-cell**](https://www.think-cell.com/en) to provide key missing consulting toolbox functionality - e.g., charts and graphs, agenda slides, chevrons, save/send slides, and much more. Additionally, Decksterity will be more useful if you invest in creating a [PowerPoint template](https://support.microsoft.com/en-us/office/create-and-save-a-powerpoint-template-ee4429ad-2a74-4100-82f7-50f8169c8aca) and [think-cell style file](https://www.think-cell.com/en/resources/manual/customization) suited to your needs. 
 
-![Decksterity ribbon](assets/ribbon2.png "Decksterity Ribbon")
-![Decksterity access keys](assets/ribbon2-with-keys.png "Ribbon hotkeys")
+![Decksterity ribbon](assets/ribbon.png "Decksterity Ribbon")
+![Decksterity access keys](assets/ribbon-with-keys.png "Ribbon hotkeys")
 
 ## 🚀 Install
 
