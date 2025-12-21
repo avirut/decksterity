@@ -8,7 +8,7 @@ Decksterity works best when combined with [**think-cell**](https://www.think-cel
 ![Decksterity ribbon](assets/ribbon.png "Decksterity Ribbon")
 ![Decksterity access keys](assets/ribbon-with-keys.png "Ribbon hotkeys")
 
-## 🚀 Install
+## Install
 
 **[Download the latest release](https://github.com/avirut/decksterity/releases/latest)**
 
@@ -21,7 +21,7 @@ Decksterity works best when combined with [**think-cell**](https://www.think-cel
 ### Updating:
 To update to a newer version, simply download and install the latest release. The installer will handle upgrading your existing installation.
 
-## ✨ Features
+## Features
 
 ### Visual Elements
 - **Harvey Balls**: Progress indicators (0-4 fill levels: ⭘, ◔, ◑, ◕, ●)
@@ -42,7 +42,7 @@ To update to a newer version, simply download and install the latest release. Th
 - **Access keys (alt shortcuts)**: Each function is tagged to access keys that will be most familiar to Bain Toolbox users - e.g., `Alt-X-AL` for aligning left; in order to keep this one tab, primary aligns will fall into the same first-level access key (e.g., `Alt-P-AL` from Bain Toolbox becomes `Alt-X-PAL`)
 - **Control keys**: Decksterity provides the same control hotkeys (e.g., `Ctrl+Shift+1` to align left) as the Bain Toolbox 
 
-## 📃 Miscellaneous
+## Miscellaneous
 
 ### Architecture
 
